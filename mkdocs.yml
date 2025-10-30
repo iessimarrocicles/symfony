@@ -12,9 +12,8 @@ dev_addr: localhost:4000
 
 # Navegació dels documents
 nav:
-- Inicio: index.md
-- Tema1: Tema1.md
-- Tema2: Tema2.md
+- Tema 1: Tema1.md
+- Tema 2: Tema2.md
 
 # Extenions
 markdown_extensions:
@@ -31,7 +30,7 @@ markdown_extensions:
 
 # Tema a triar
 theme: 
-  name: material   # selecció del tema - mkdocs o readthedocs / material (pip install mkdocs-material)
+  name: material # selecció del tema - mkdocs o readthedocs / material (pip install mkdocs-material)
   highlightjs: true
   palette:
    # Boto que canvia a mode oscur

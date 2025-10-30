@@ -5,3 +5,15 @@ h1{
 h2, h3, h4 {
     border-bottom: 1px solid var(--md-typeset-color);
 }
+/* Ocultar la barra lateral secundària */
+/*
+.md-sidebar--secondary {
+  display: none !important;
+}
+*/
+/* Ocultar la barra lateral primària */
+/*
+.md-sidebar--primary {
+  display: none !important;
+}
+  */

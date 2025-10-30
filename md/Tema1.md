@@ -1,6 +1,5 @@
 ---
 title: "TEMA 1 — Introducció als frameworks PHP i a Symfony"
-icon: material/language-php
 nav:
   - TEMA 1: 'tema01-introduccio.md'
 ---
@@ -57,8 +56,8 @@ Symfony és un framework **modern, segur i molt complet**. Els seus principals a
 - 🌍 **Gran comunitat** i **documentació oficial** excel·lent.  
 - 💡 **Bones pràctiques integrades**, seguint estàndards PSR.  
 - 🔌 **Integració amb llibreries de tercers** com:
-  - **Twig** → motor de plantilles per a generar vistes.
-  - **Doctrine** → ORM per a treballar amb bases de dades com a objectes.
+    - **Twig** → motor de plantilles per a generar vistes.
+    - **Doctrine** → ORM per a treballar amb bases de dades com a objectes.
 
 ---
 
