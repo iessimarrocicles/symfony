@@ -12,7 +12,7 @@ dev_addr: localhost:4000
 
 # Navegació dels documents
 nav:
-- Índex: index.md
+- Index: index.md
 - Tema 1: Tema1.md
 - Tema 2: Tema2.md
 
