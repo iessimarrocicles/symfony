@@ -96,29 +96,6 @@ Per treballar amb **Symfony 6.4** o superior, cal tindre instal·lats els següe
 
 ---
 
-## 7. Instal·lació bàsica (resum)
-
-Per crear un nou projecte Symfony amb l’esquelet complet:
-
-```bash
-composer create-project symfony/website-skeleton nom_projecte
-```
-
-O per crear un projecte lleuger, sense bundles innecessaris:
-
-```bash
-composer create-project symfony/skeleton nom_projecte
-```
-
-Després pots iniciar el servidor intern de Symfony amb:
-
-```bash
-symfony serve
-```
-
-
-
-
 ## 7. Primers passos amb Symfony
 
 Creació d'un nou projecte com una web completa *(recomanada per aplicacions web “classiques”)*
