@@ -163,7 +163,7 @@ composer require twig
 
 Quan creem un projecte amb Symfony, s’organitza automàticament en una estructura de carpetes molt clara i estandarditzada. Aquesta estructura ajuda a mantenir el codi ordenat i a separar la lògica, les vistes i la configuració.
 
-### 8.1. 📁 Estructura principal
+### 8.1. Estructura principal
 ```
 projecte/
 │

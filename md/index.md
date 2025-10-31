@@ -2,10 +2,10 @@
 
 Benvinguts al curs de **Symfony**, un dels frameworks PHP més potents i utilitzats per al desenvolupament d’aplicacions web modernes.
 
-## Objectius del curs
+## 1. Objectius del curs
 En aquest curs aprendrem a desenvolupar aplicacions web en **entorn servidor** utilitzant el framework **Symfony**, treballant amb els seus principals components i bones pràctiques de programació.
 
-## Continguts principals
+## 2. Continguts principals
 Al llarg del curs anirem aprofundint en els següents temes:
 
 1. **Introducció a Symfony**  
@@ -35,7 +35,7 @@ Al llarg del curs anirem aprofundint en els següents temes:
 9. **Desplegament d’aplicacions Symfony**  
    Preparar i publicar aplicacions Symfony en servidors o plataformes cloud.
 
-## Requisits previs
+## 3. Requisits previs
 Per a seguir el curs és recomanable tindre coneixements bàsics de:
 
   - **PHP orientat a objectes**
