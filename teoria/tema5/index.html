@@ -1,0 +1,2512 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://iessimarrocicles.github.io/symfony/teoria/tema5/">
+      
+      
+        <link rel="prev" href="../../practica/practica4/">
+      
+      
+        <link rel="next" href="../../practica/practica5/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>TEMA 5 — Model de dades amb Doctrine - SYMFONY</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-5-model-de-dades-amb-doctrine" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SYMFONY" class="md-header__button md-logo" aria-label="SYMFONY" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SYMFONY
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TEMA 5 — Model de dades amb Doctrine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SYMFONY" class="md-nav__button md-logo" aria-label="SYMFONY" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    SYMFONY
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducció
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1_annex1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annex 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1_annex2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annex 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccio-a-doctrine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducció a Doctrine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introducció a Doctrine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-un-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Què és un ORM?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configuracio-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Configuració bàsica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Entitats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Entitats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Crear Entitats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-editar-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Editar Entitats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-establir-claus-primaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Establir claus primàries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-actualitzar-la-base-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Actualitzar la base de dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-funcionament-intern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Funcionament intern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Funcionament intern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-com-es-relacionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Com es relacionen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-resum-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Resum visual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persistir-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persistir objectes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Persistir objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-guardar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Guardar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-modificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Modificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-eliminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Eliminar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-captura-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Captura errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-consultar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Consultar objectes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Consultar objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-exemple-complet-en-un-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Exemple complet en un controlador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-consultes-avancades-querybuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Consultes avançades (QueryBuilder)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-altres-formes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3. Altres formes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-relacions-entre-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Relacions entre entitats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Relacions entre entitats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-relacio-molts-a-un-manytoone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Relació Molts a Un (ManyToOne)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-recursos-i-documentacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Recursos i documentació
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccio-a-doctrine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducció a Doctrine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introducció a Doctrine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-que-es-un-orm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Què és un ORM?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configuracio-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Configuració bàsica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Entitats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Entitats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Crear Entitats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-editar-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Editar Entitats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-establir-claus-primaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Establir claus primàries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-actualitzar-la-base-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Actualitzar la base de dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-funcionament-intern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Funcionament intern
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Funcionament intern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-com-es-relacionen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Com es relacionen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-resum-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Resum visual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-persistir-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Persistir objectes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Persistir objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-guardar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Guardar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-modificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Modificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-eliminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Eliminar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-captura-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Captura errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-consultar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Consultar objectes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Consultar objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-exemple-complet-en-un-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Exemple complet en un controlador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-consultes-avancades-querybuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Consultes avançades (QueryBuilder)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-altres-formes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3. Altres formes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-relacions-entre-entitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Relacions entre entitats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Relacions entre entitats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-relacio-molts-a-un-manytoone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Relació Molts a Un (ManyToOne)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-recursos-i-documentacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Recursos i documentació
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-5-model-de-dades-amb-doctrine">📘 Tema 5 — Model de dades amb Doctrine</h1>
+<h2 id="1-introduccio-a-doctrine">1. Introducció a Doctrine</h2>
+<h3 id="11-que-es-un-orm">1.1 Què és un ORM?</h3>
+<p>Un <strong>ORM</strong> (<em>Object Relational Mapping</em>) és un sistema que permet treballar amb bases de dades <strong>relacionals</strong> utilitzant <strong>objectes</strong>.<br />
+Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
+<ul>
+<li>Podem connectar-nos a una base de dades relacional (MySQL, MariaDB, PostgreSQL, etc.).</li>
+<li>Les taules i columnes es mapegen automàticament amb classes i atributs PHP.</li>
+<li>Ens abstrau del gestor de base de dades concret, ja que tot es fa a través d’objectes.</li>
+</ul>
+<p><strong>Avantatge principal:</strong>  </p>
+<ul>
+<li>Aïllar l’aplicació del gestor de base de dades (MySQL, Oracle, PostgreSQL...). Symfony treballa amb objectes, i Doctrine s’encarrega de convertir-los a registres SQL o viceversa.</li>
+</ul>
+<hr />
+<h3 id="12-configuracio-basica">1.2 Configuració bàsica</h3>
+<p>Doctrine utilitza el fitxer <code>.env</code> per a definir la <strong>connexió amb la base de dades</strong>. </p>
+<p>L'estructura general serà aquesta:
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+</span></code></pre></div></td></tr></table></div></p>
+<p>Exemple:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>DATABASE_URL=&quot;mysql://root@127.0.0.1:3306/daw_agenda&quot;
+</span></code></pre></div></td></tr></table></div>
+<p>Després, podem crear la base de dades amb la comanda:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>php<span class="w"> </span>bin/console<span class="w"> </span>doctrine:database:create
+</span></code></pre></div></td></tr></table></div>
+<p>Aquesta comanda llegirà la variable <code>DATABASE_URL</code> i crearà la base de dades indicada.</p>
+<p>⚠️ <strong>Atenció:</strong> No s’ha de pujar l’arxiu <code>.env</code> al repositori, ja que conté dades sensibles (usuaris, contrasenyes…).</p>
+<hr />
+<h2 id="2-entitats">2. Entitats</h2>
+<p>Una <strong>entitat</strong> és una classe PHP que representa una taula de la base de dades.</p>
+<p>Exemple d’entitat: <code>Contacte</code> amb atributs <code>id</code>, <code>nom</code>, <code>telefon</code> i <code>email</code>.</p>
+<h3 id="21-crear-entitats">2.1. Crear Entitats</h3>
+<p>Per a la creació d'entitat utilitzem la següent instrucció:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:entity
+</span></code></pre></div></td></tr></table></div>
+<p>L’assistent et demanarà:</p>
+<ul>
+<li>Nom de la classe</li>
+<li>Propietats del atributs: nom, tipus, tamany, si poden ser nuls o no</li>
+</ul>
+<p>Exemple d’execució:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Class name of the entity to create or update:
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a> &gt; Contacte
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>New property name:
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a> &gt; nom
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a>Field type:
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a> &gt; string
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a>Field length [255]:
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a> &gt; 255
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a>Can this field be null in the database? [no]:
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a> &gt; no
+</span></code></pre></div></td></tr></table></div>
+<p>Com a resultat, generarà el codi corresponent a la següent classe:</p>
+<p><strong>Fitxer:</strong> <code>src/Entity/Contacte.php</code>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">App\Entity</span><span class="p">;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">use</span> <span class="nx">App\Repository\ContacteRepository</span><span class="p">;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Doctrine\ORM\Mapping</span> <span class="k">as</span> <span class="nx">ORM</span><span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">#[</span><span class="nd">ORM\Entity</span><span class="p">(</span><span class="nx">repositoryClass</span><span class="o">:</span> <span class="nx">ContacteRepository</span><span class="o">::</span><span class="na">class</span><span class="p">)]</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">class</span> <span class="nc">Contacte</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">{</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span class="p">#[</span><span class="nd">ORM\Id</span><span class="p">]</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="p">#[</span><span class="nd">ORM\GeneratedValue</span><span class="p">]</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="p">#[</span><span class="nd">ORM\Column</span><span class="p">]</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span class="k">private</span> <span class="o">?</span><span class="nx">int</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="p">#[</span><span class="nd">ORM\Column</span><span class="p">(</span><span class="nx">length</span><span class="o">:</span> <span class="mi">255</span><span class="p">)]</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="k">private</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18"></a>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="p">#[</span><span class="nd">ORM\Column</span><span class="p">(</span><span class="nx">length</span><span class="o">:</span> <span class="mi">15</span><span class="p">)]</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="k">private</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$telefon</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21"></a>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="p">#[</span><span class="nd">ORM\Column</span><span class="p">(</span><span class="nx">length</span><span class="o">:</span> <span class="mi">255</span><span class="p">)]</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>    <span class="k">private</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$email</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25"></a>    <span class="c1">// Getters i setters</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="p">}</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27"></a>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>El camp <strong>codi</strong> que abans utilitzavem com a identificador s’ha substituït per un <strong>id</strong> autonumèric que Doctrine genera automàticament com a clau principal. Així, només cal definir els altres camps (nom, telèfon i email) amb el seu tipus corresponent.</p>
+<div class="admonition tip">
+<p class="admonition-title">Symfony</p>
+<p>L’execució de la instrucció genera automàticament les següents classes:</p>
+<ul>
+<li>El fitxer de l’entitat en <code>src/Entity/Contate.php</code>.</li>
+<li>El seu repositori en <code>src/Repository/ContacteRepository.php</code> (si no existia).</li>
+</ul>
+<p>Recorda no es modifica la base de dades. Per aplicar els canvis al esquema cal generar i executar la migració, tal com explicarem en l’apartat següent.</p>
+</div>
+<p>Els tipus de dades més habituals en Doctrine són:</p>
+<ul>
+<li>string (text amb longitud limitada)</li>
+<li>text (text llarg)</li>
+<li>integer (enter)</li>
+<li>boolean (cert/fals)</li>
+<li>float (nombre real)</li>
+<li>date, time, datetime (dates i hores).</li>
+</ul>
+<hr />
+<h3 id="22-editar-entitats">2.2. Editar Entitats</h3>
+<p>Si després de crear una entitat volem canviar-ne l’estructura, podem editar la classe manualment o tornar a executar <code>php bin/console make:entity</code>, indicant el mateix nom d’entitat per afegir nous camps.</p>
+<p>Una vegada fets els canvis, cal generar i executar una nova migració perquè Doctrine actualitze la base de dades amb la nova estructura.</p>
+<hr />
+<h3 id="23-establir-claus-primaries">2.3. Establir claus primàries</h3>
+<p>Per defecte, Doctrine crea automàticament un camp <code>id</code> autonumèric com a <strong>clau primària</strong>.  </p>
+<p>Si volem utilitzar un altre camp com a identificador, hem de seguir aquests passos:</p>
+<ol>
+<li>Eliminar l’atribut <code>id</code> i el seu <em>getter</em> de l’entitat.  </li>
+<li>Afegir l’anotació següent al camp que volem usar com a clau primària:</li>
+</ol>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="x">#[ORM\Id]</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="x">private $nomCamp;</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>Si la clau és <strong>composta</strong> (format per diversos camps), afegirem aquesta anotació a cadascun d’ells.</li>
+</ul>
+<p>Finalment, cal generar i aplicar una nova migració perquè la base de dades s’actualitze.</p>
+<hr />
+<h2 id="3-actualitzar-la-base-de-dades">3. Actualitzar la base de dades</h2>
+<p>Una vegada definida l’entitat o les seues modificacions, és necessari sincronitzar els canvis amb la base de dades perquè l’estructura (taules, columnes, relacions...) coincidisca amb el model definit al projecte.</p>
+<p>El flux de treball habitual és el següent:</p>
+<p>Comandes:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># 1. Comprovar les diferències entre entitats i base de dades</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>php<span class="w"> </span>bin/console<span class="w"> </span>doctrine:schema:validate
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c1"># 2. Genera un fitxer de migració amb els canvis detectats</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:migration
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="c1"># 3. Aplica (i registra) les migracions pendents</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>php<span class="w"> </span>bin/console<span class="w"> </span>doctrine:migrations:migrate
+</span></code></pre></div></td></tr></table></div>
+<p>Aquest procés crea o modifica les taules que corresponen a les entitats del projecte de manera controlada i reversible.</p>
+<hr />
+<h2 id="4-funcionament-intern">4. Funcionament intern</h2>
+<p>Per comprendre bé el funcionament, primer necessitem conéixer tres components bàsics que Doctrine utilitza internament.</p>
+<ul>
+<li>
+<p><strong>ManagerRegistry:</strong> és el punt central de connexió que sap quins gestors hi ha disponibles i com accedir (com la centraleta de Doctrine).</p>
+<ul>
+<li>Serveix per obtindre l’EntityManager adequat. En la majoria de projectes només hi ha un, però aquest servei permetria gestionar diversos gestors de base de dades.</li>
+</ul>
+</li>
+<li>
+<p><strong>EntityManager:</strong> és el gestor d’entitats.</p>
+<ul>
+<li>S’encarrega de les operacions d’escriptura i gestió del cicle de vida de les entitats:<ul>
+<li>Sap com guardar, modificar, eliminar de la base de dades.</li>
+<li>També permet accedir a buscar informació, mitjançant el repositori de cada entitat.<ul>
+<li><strong>Repositori</strong>: és una classe especialitzada a obtenir entitats d'un tipus concret.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="41-com-es-relacionen">4.1. Com es relacionen</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Element</strong></th>
+<th><strong>Rol</strong></th>
+<th><strong>Analogia</strong></th>
+<th><strong>S’obté de</strong></th>
+<th><strong>Exemple</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ManagerRegistry</strong></td>
+<td>Punt d’accés central als EntityManagers</td>
+<td>☎️ Centraleta de gestors</td>
+<td>S’injecta automàticament</td>
+<td><code>getManager()</code>, <code>getManagerForClass()</code></td>
+</tr>
+<tr>
+<td><strong>EntityManager</strong></td>
+<td>Gestiona el cicle de vida de les entitats</td>
+<td>🧰 L’encarregat del magatzem</td>
+<td><code>ManagerRegistry-&gt;getManager()</code></td>
+<td><code>persist()</code>, <code>flush()</code>, <code>remove()</code></td>
+</tr>
+<tr>
+<td><strong>Repository</strong></td>
+<td>Busca i recupera entitats concretes</td>
+<td>📗 Catàleg o venedor</td>
+<td><code>EntityManager-&gt;getRepository()</code></td>
+<td><code>find()</code>, <code>findBy()</code>, <code>findAll()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="42-resum-visual">4.2. Resum visual</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span>
+<span class="normal"><a href="#__codelineno-8-7">7</a></span>
+<span class="normal"><a href="#__codelineno-8-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>ManagerRegistry
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">     </span>│
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">     </span>└──&gt;<span class="w"> </span>EntityManager
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">              </span>│
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">              </span>├──<span class="w"> </span>persist<span class="o">()</span>,<span class="w"> </span>flush<span class="o">()</span>,<span class="w"> </span>remove<span class="o">()</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">              </span>└──&gt;<span class="w"> </span>Repository<span class="w"> </span><span class="o">(</span>per<span class="w"> </span>entitat<span class="o">)</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">                        </span>├──<span class="w"> </span>find<span class="o">()</span>,<span class="w"> </span>findBy<span class="o">()</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">                        </span>└──<span class="w"> </span>mètodes<span class="w"> </span>personalitzats<span class="w"> </span><span class="o">(</span>createQueryBuilder<span class="o">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition important">
+<p class="admonition-title">Symfony</p>
+<p>En els nostres projectes només tenim una base de dades i un únic gestor, per això injectem directament <strong>EntityManagerInterface</strong>, que és més simple i net.</p>
+<p>No necessitem cridar <code>$registry-&gt;getManager()</code> perquè no hi ha cap dubte sobre quin manager s’ha d’utilitzar.</p>
+</div>
+<hr />
+<h2 id="5-persistir-objectes">5. Persistir objectes</h2>
+<p>L’<strong>EntityManager</strong> és el component encarregat de gestionar el cicle de vida de les entitats, és a dir, les operacions que afecten directament la base de dades: inserir, modificar o eliminar registres.</p>
+<p>Per a poder utilitzar-lo en un controlador, s’ha d’injectar la interfície <strong><code>EntityManagerInterface</code></strong>, que proporciona els mètodes necessaris per a treballar amb les entitats, com ara <code>persist()</code>, <code>remove()</code> o <code>flush()</code>.</p>
+<h3 id="51-guardar">5.1. Guardar</h3>
+<p>Exemple dins d'un mètode al controlador:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">use</span> <span class="nx">App\Entity\Contacte</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">use</span> <span class="nx">Doctrine\ORM\EntityManagerInterface</span><span class="p">;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="p">{</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>    <span class="o">...</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/afegir&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;afegir_contacte&#39;</span><span class="p">)]</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">afegir</span><span class="p">(</span><span class="nx">EntityManagerInterface</span> <span class="nv">$gestor</span><span class="p">)</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>    <span class="p">{</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Contacte</span><span class="p">();</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setNom</span><span class="p">(</span><span class="s2">&quot;Juan Cuesta&quot;</span><span class="p">);</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;659231544&quot;</span><span class="p">);</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s2">&quot;juan@simarro.org&quot;</span><span class="p">);</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>        <span class="c1">// Indiquem que volem guardar aquest objecte</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>        <span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>        <span class="c1">// S’executa la inserció</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a>        <span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Contacte &quot;</span> <span class="o">.</span> <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; guardat.&quot;</span><span class="p">);</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>    <span class="p">}</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>    <span class="o">...</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>📝 Notes:</p>
+<ul>
+<li>És important col·locar el controlador d’inserció abans del de cerca, perquè si no, en accedir a la ruta <code>/contacte/inserir</code>, Symfony podria interpretar “inserir” com un paràmetre del controlador de cerca i executar-lo per error.</li>
+</ul>
+<hr />
+<h3 id="52-modificar">5.2. Modificar</h3>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;600000000&quot;</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="53-eliminar">5.3. Eliminar</h3>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="54-captura-errors">5.4. Captura errors</h3>
+<p>Si es produeix un error durant la inserció (si algun camp obligatori és nul o es duplica una clau primària), el mètode <code>flush()</code> llançarà una <strong>excepció</strong>.  </p>
+<p>Per evitar que l’aplicació es trenque, podem <strong>capturar l’excepció</strong> i mostrar una resposta controlada a l’usuari:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$objecte</span><span class="p">);</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>    <span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Objecte guardat&quot;</span><span class="p">);</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Error guardant objecte: &quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="p">}</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Això garanteix un <strong>tractament d’errors segur</strong> i evita que es mostren missatges interns del servidor.</p>
+<hr />
+<h2 id="6-consultar-objectes">6. Consultar objectes</h2>
+<p>Doctrine crea automàticament una classe de <strong>repositori</strong> per a cada entitat (per exemple, ContacteRepository). Aquesta classe hereta de <code>ServiceEntityRepository</code> i permet:</p>
+<ul>
+<li>Recuperar dades.</li>
+<li>Fer cerques personalitzades.</li>
+<li>Accedir a l’EntityManager per fer canvis.</li>
+</ul>
+<p>Per a poder fer <strong>consultes</strong> a la nostra base de dades, s’ha d’injectar al controlador la interfície <code>EntityManagerInterface</code>, que ens permet obtindre el repositori de qualsevol entitat i accedir a les seues dades.</p>
+<hr />
+<p>En Symfony és una molt bona pràctica injectar l’EntityManagerInterface en el constructor. Això et permet tindre disponible l’entity manager en tots els mètodes del controlador.</p>
+<p>Si tenim una entitat <code>Contacte</code>, podem obtindre el seu repositori per fer consultes així:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>    <span class="k">private</span> <span class="nv">$repositori</span><span class="p">;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a>    <span class="c1">// Injecció de dependència al constructor</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">EntityManagerInterface</span> <span class="nv">$gestor</span><span class="p">)</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>    <span class="p">{</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>        <span class="c1">// Instància única del repositori de Contacte</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="nx">Contacte</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>    <span class="p">}</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a>    <span class="c1">// A partir d&#39;ací, qualsevol mètode pot utilitzar:</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a>    <span class="c1">// → $this-&gt;gestor     → per a persistir, modificar o eliminar</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a>    <span class="c1">// → $this-&gt;repositori → per a fer consultes sobre Contacte</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a>    <span class="o">...</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="p">}</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21"></a>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Una vegada tenim el repositori, podem utilitzar diferents mètodes de consulta.</p>
+<ul>
+<li>
+<p><strong>Mètode <code>find()</code></strong></p>
+<p>Localiza un objecte per la clau primària (normalment l’id) que se li passa com a paràmetre.</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="x">$contacte = $this-&gt;repositori-&gt;find(1);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>➡️ Aquesta instrucció buscarà el contacte amb id = 1.</p>
+<hr />
+</li>
+<li>
+<p><strong>Mètode <code>findOneBy()</code></strong></p>
+<p>Localitza un únic objecte que complisca els criteris de cerca passats com a paràmetre (en forma d’array associatiu).</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="x">$contacte = $this-&gt;repositori-&gt;findOneBy([&quot;telefon&quot; =&gt; &quot;687908070&quot;]);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>➡️ Aquesta consulta busca el contacte el telèfon del qual siga "687908070".</p>
+<p>Si volem indicar més d’un criteri, podem afegir-los a l’array:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="x">$contacte = $this-&gt;repositori-&gt;findOneBy([</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="x">    &quot;nom&quot; =&gt; &quot;Laura&quot;,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="x">    &quot;email&quot; =&gt; &quot;laura@gmail.com&quot;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="x">]);</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+</li>
+<li>
+<p><strong>Mètode <code>findBy()</code></strong></p>
+<p>Localitza tots els objectes que complisquen els criteris passats com a paràmetre.
+Retorna un array d’objectes.</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">$contactes = $this-&gt;repositori-&gt;findBy([&quot;comarca&quot; =&gt; &quot;La Costera&quot;]);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>➡️ Retorna un array amb tots els contactes que pertanyen a la comarca “La Costera”.</p>
+<p>També es pot afegir ordre i límit als resultats:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">$contactes = $this-&gt;repositori-&gt;findBy(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="x">    [&quot;comarca&quot; =&gt; &quot;La Costera&quot;],</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="x">    [&quot;nom&quot; =&gt; &quot;ASC&quot;], // ordre ascendent pel nom</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="x">    10,               // màxim 10 resultats</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="x">    0                 // des de l’índex 0</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="x">);</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+</li>
+<li>
+<p><strong>Mètode <code>findAll()</code></strong></p>
+<p>Recupera tots els objectes de la taula corresponent a l’entitat.</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="x">$contactes = $this-&gt;repositori-&gt;findAll();</span>
+</span></code></pre></div></td></tr></table></div>
+<p>➡️ Retorna un array amb tots els contactes existents en la base de dades.</p>
+<hr />
+</li>
+</ul>
+<h3 id="61-exemple-complet-en-un-controlador">6.1. Exemple complet en un controlador</h3>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span>
+<span class="normal"><a href="#__codelineno-20-16">16</a></span>
+<span class="normal"><a href="#__codelineno-20-17">17</a></span>
+<span class="normal"><a href="#__codelineno-20-18">18</a></span>
+<span class="normal"><a href="#__codelineno-20-19">19</a></span>
+<span class="normal"><a href="#__codelineno-20-20">20</a></span>
+<span class="normal"><a href="#__codelineno-20-21">21</a></span>
+<span class="normal"><a href="#__codelineno-20-22">22</a></span>
+<span class="normal"><a href="#__codelineno-20-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="c1"># Al constructor hem injectat EntityManagerInterface com a $gestor</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">])]</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="p">{</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>    <span class="c1">// 1) Buscar el contacte pel codi</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a>    <span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$codi</span><span class="p">);</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a>    <span class="nd">if</span> <span class="p">(</span><span class="nv">$contacte</span><span class="p">)</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a>        <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13"></a>            <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="nv">$contacte</span><span class="p">,</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14"></a>            <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15"></a>        <span class="p">]);</span>
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16"></a>    <span class="k">else</span>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18"></a>            <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19"></a>            <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span>
+</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20"></a>        <span class="p">]);</span>
+</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21"></a><span class="p">}</span>
+</span><span id="__span-20-22"><a id="__codelineno-20-22" name="__codelineno-20-22"></a>
+</span><span id="__span-20-23"><a id="__codelineno-20-23" name="__codelineno-20-23"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>En aquest exemple, el controlador accedeix al repositori de Contacte i recupera un objecte segons el seu id. Si el troba, renderitza la plantilla fitxa.html.twig amb les dades del contacte; en cas contrari, envia el contacte buit.</p>
+<hr />
+<h3 id="62-consultes-avancades-querybuilder">6.2. Consultes avançades (QueryBuilder)</h3>
+<p>Els mètodes anteriors permeten buscar per igualtat directa.
+Si volem fer cerques parcials o condicionals, podem afegir mètodes personalitzats al repositori utilitzant el QueryBuilder de Doctrine.</p>
+<p><strong>Exemple 1: buscar contactes pel nom</strong></p>
+<p><strong>Fitxer:</strong> <code>src/Repository/ContacteRepository.php</code></p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-21-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-21-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-21-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-21-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-21-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-21-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-21-10">10</a></span>
+<span class="normal"><a href="#__codelineno-21-11">11</a></span>
+<span class="normal"><a href="#__codelineno-21-12">12</a></span>
+<span class="normal"><a href="#__codelineno-21-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">findByName</span><span class="p">(</span><span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="p">{</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a>        <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;c.nom LIKE :text&#39;</span><span class="p">)</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a>        <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span> <span class="o">.</span> <span class="nv">$text</span> <span class="o">.</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a>        <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10"></a>    <span class="k">return</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="p">}</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12"></a>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>➡️ Aquesta consulta retornarà tots els contactes el nom dels quals continga el text indicat.</p>
+<p>I podem cridar-la des del controlador:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-22-10">10</a></span>
+<span class="normal"><a href="#__codelineno-22-11">11</a></span>
+<span class="normal"><a href="#__codelineno-22-12">12</a></span>
+<span class="normal"><a href="#__codelineno-22-13">13</a></span>
+<span class="normal"><a href="#__codelineno-22-14">14</a></span>
+<span class="normal"><a href="#__codelineno-22-15">15</a></span>
+<span class="normal"><a href="#__codelineno-22-16">16</a></span>
+<span class="normal"><a href="#__codelineno-22-17">17</a></span>
+<span class="normal"><a href="#__codelineno-22-18">18</a></span>
+<span class="normal"><a href="#__codelineno-22-19">19</a></span>
+<span class="normal"><a href="#__codelineno-22-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="c1"># Al constructor hem:</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="c1"># - Injectat EntityManagerInterface.</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="c1"># - Asignat el repositori.</span>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{text}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;buscar_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;[a-zA-Z]+&#39;</span><span class="p">])]</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">buscar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="p">{</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10"></a>    <span class="c1">// 1) Filtrar pel mètode creat al repositori</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a>    <span class="nv">$resultat</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">findByName</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12"></a>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a>    <span class="c1">// 2) Passar la llista (pot ser buida) a la vista</span>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14"></a>    <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/cerca.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15"></a>        <span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="nv">$text</span><span class="p">,</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16"></a>        <span class="s1">&#39;resultats&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resultat</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17"></a>    <span class="p">]);</span>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18"></a><span class="p">}</span>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19"></a>
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Aquest controlador permet buscar contactes pel nom introduït en la URL, utilitzant la consulta definida al repositori. Després envia els resultats a una vista llista_contactes.html.twig per a mostrar-los.</p>
+<hr />
+<p><strong>Exemple 2: buscar contactes majors d'una certa edat</strong></p>
+<p><strong>Fitxer:</strong> <code>src/Repository/ContacteRepository.php</code></p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-23-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-23-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span>
+<span class="normal"><a href="#__codelineno-23-11">11</a></span>
+<span class="normal"><a href="#__codelineno-23-12">12</a></span>
+<span class="normal"><a href="#__codelineno-23-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">findByEdatMajorQue</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$edat</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="p">{</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>    <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createQueryBuilder</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>        <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;p.edat &gt; :edat&#39;</span><span class="p">)</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>        <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s1">&#39;edat&#39;</span><span class="p">,</span> <span class="nv">$edat</span><span class="p">)</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>        <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a>    <span class="k">return</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11"></a><span class="p">}</span>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12"></a>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition danger">
+<p class="admonition-title">Laboratori</p>
+<p>Aquesta consulta no funcionarà al projecte actual perquè l'entitat Contacte no té definit el camp edat.</p>
+</div>
+<hr />
+<h3 id="63-altres-formes">6.3. Altres formes</h3>
+<p>A més d’emprar el <code>QueryBuilder</code> o els mètodes per defecte del repositori (<code>find</code>, <code>findOneBy</code>, <code>findBy</code>, etc.), Doctrine permet realitzar consultes mitjançant dues alternatives addicionals:</p>
+<ul>
+<li><strong>DQL (Doctrine Query Language):</strong> llenguatge similar a SQL però orientat a entitats en lloc de taules.</li>
+<li><strong>SQL natiu:</strong> permet escriure consultes directament en SQL quan necessitem màxim control o optimització.</li>
+</ul>
+<hr />
+<h2 id="7-relacions-entre-entitats">7. Relacions entre entitats</h2>
+<p>Fins ara, hem treballat amb operacions centrades en una sola entitat (taula).  </p>
+<p>Aquesta secció explica com gestionar i operar amb més d'una entitat que estan relacionades entre si en la base de dades.</p>
+<p>Hi ha dos tipus principals de relacions entre entitats:</p>
+<table>
+<thead>
+<tr>
+<th>Tipus de Relació</th>
+<th>Descripció</th>
+<th>Implementació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Molts a Un (Many-to-One)</strong></td>
+<td>Engloba les relacions Un a Molts, Molts a Un i Un a Un.</td>
+<td>Es reflecteix afegint una <strong>Clau Aliena (Foreign Key)</strong> en una de les entitats que referencia l'altra.</td>
+</tr>
+<tr>
+<td><strong>Molts a Molts (Many-to-Many)</strong></td>
+<td>Una entitat es pot relacionar amb múltiples instàncies de l'altra, i viceversa.</td>
+<td>Requereix una <strong>Taula Addicional</strong> (taula pivot/d’unió) per emmagatzemar la relació entre els IDs de les dues entitats.</td>
+</tr>
+</tbody>
+</table>
+<p>Exemples:</p>
+<table>
+<thead>
+<tr>
+<th>Tipus de relació</th>
+<th>Exemple</th>
+<th>Anotació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OneToOne</td>
+<td>Persona ↔ Passaport</td>
+<td><code>#[ORM\OneToOne]</code></td>
+</tr>
+<tr>
+<td>OneToMany / ManyToOne</td>
+<td>Comarca ↔ Població</td>
+<td><code>#[ORM\OneToMany]</code>, <code>#[ORM\ManyToOne]</code></td>
+</tr>
+<tr>
+<td>ManyToMany</td>
+<td>Alumne ↔ Assignatura</td>
+<td><code>#[ORM\ManyToMany]</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="71-relacio-molts-a-un-manytoone">7.1. Relació Molts a Un (<code>ManyToOne</code>)</h3>
+<p>Com a exemple pràctic, crearem una relació <em>Molts a Un</em> entre l'entitat <code>Contacte</code> i una nova entitat <code>Comarca</code> (un contacte pertany a una comarca, i una comarca pot tenir molts contactes).</p>
+<hr />
+<p><strong>Pas 1. Creació de l'Entitat <code>Comarca</code></strong></p>
+<p>Primer, generem l'entitat amb un ID autogenerat i un camp <code>nom</code>.</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:entity
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>&gt;<span class="w"> </span>Comarca
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="c1"># ... Afegir el camp &#39;nom&#39; com a string (255, no nullable)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Després, creem la taula <code>Comarca</code> a la base de dades mitjançant una migració:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="c1"># 1. Genera un fitxer de migració amb els canvis detectats</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:migration
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="c1"># 2. Aplica (i registra) les migracions pendents</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>php<span class="w"> </span>bin/console<span class="w"> </span>doctrine:migration:migrate
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<p><strong>Pas 2. Afegir la Relació a l'Entitat <code>Contacte</code></strong></p>
+<p>Editem l'entitat <code>Contacte</code> per afegir-li el camp de relació <code>comarca</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-26-10">10</a></span>
+<span class="normal"><a href="#__codelineno-26-11">11</a></span>
+<span class="normal"><a href="#__codelineno-26-12">12</a></span>
+<span class="normal"><a href="#__codelineno-26-13">13</a></span>
+<span class="normal"><a href="#__codelineno-26-14">14</a></span>
+<span class="normal"><a href="#__codelineno-26-15">15</a></span>
+<span class="normal"><a href="#__codelineno-26-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:entity
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>&gt;<span class="w"> </span>Contacte
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="c1"># ...</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>New<span class="w"> </span>property<span class="w"> </span>name:
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6"></a>&gt;<span class="w"> </span>comarca
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7"></a>Field<span class="w"> </span>type:
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8"></a>&gt;<span class="w"> </span>relation
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9"></a>What<span class="w"> </span>class<span class="w"> </span>should<span class="w"> </span>this<span class="w"> </span>entity<span class="w"> </span>be<span class="w"> </span>related<span class="w"> </span>to?:
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10"></a>&gt;<span class="w"> </span>Comarca
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11"></a>Relation<span class="w"> </span>type?:
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12"></a>&gt;<span class="w"> </span>ManyToOne
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13"></a>Is<span class="w"> </span>the<span class="w"> </span>Contacte.comarca<span class="w"> </span>property<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>null<span class="w"> </span><span class="o">(</span>nullable<span class="o">)</span>?:
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14"></a>&gt;<span class="w"> </span>no
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15"></a>Do<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>property<span class="w"> </span>to<span class="w"> </span>Comarca...?:
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16"></a>&gt;<span class="w"> </span>no
+</span></code></pre></div></td></tr></table></div>
+<p>Això afegeix un atribut a l'entitat <code>Contacte</code> com el següent:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span>
+<span class="normal"><a href="#__codelineno-27-5">5</a></span>
+<span class="normal"><a href="#__codelineno-27-6">6</a></span>
+<span class="normal"><a href="#__codelineno-27-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="p">#[</span><span class="nd">ORM\ManyToOne</span><span class="p">]</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="p">#[</span><span class="nd">ORM\JoinColumn</span><span class="p">(</span><span class="nx">nullable</span><span class="o">:</span> <span class="k">false</span><span class="p">)]</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="k">private</span> <span class="o">?</span><span class="nx">Comarca</span> <span class="nv">$comarca</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6"></a>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<p><strong>Pas 3. Actualització de la Base de Dades</strong></p>
+<p>Després de fer els canvis, tornem a generar i executar la migració:</p>
+<blockquote>
+<p>⚠️ Si hi ha registres de <code>Contacte</code> sense <code>Comarca</code>, cal eliminar-los o afegir-los abans per evitar errors de clau aliena.</p>
+</blockquote>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="c1"># 1. Genera un fitxer de migració amb els canvis detectats</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>php<span class="w"> </span>bin/console<span class="w"> </span>make:migration
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="c1"># 2. Aplica (i registra) les migracions pendents</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>php<span class="w"> </span>bin/console<span class="w"> </span>doctrine:migration:migrate
+</span></code></pre></div></td></tr></table></div>
+<p>Això afegeix la <strong>clau aliena</strong> <code>comarca_id</code> a la taula <code>contacte</code>.</p>
+<hr />
+<p><strong>Pas 4. Treballar amb Entitats Relacionades</strong></p>
+<p>Una vegada les entitats estan relacionades, podem fer operacions d’inserció i de cerca.</p>
+<hr />
+<p><strong>- Inserció d’Entitats Relacionades</strong></p>
+<ul>
+<li>
+<p>Si la <code>Comarca</code> no existeix:</p>
+<ol>
+<li>Es creen els objectes <code>Comarca</code> i <code>Contacte</code>.  </li>
+<li>S’estableix la relació:
+   <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="x">$contacte-&gt;setComarca($comarca);</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>Es persisteixen ambdós objectes i es crida a <code>flush()</code>.</li>
+</ol>
+</li>
+<li>
+<p>Si la <code>Comarca</code> ja existeix:</p>
+<ol>
+<li>Es cerca l'objecte <code>Comarca</code> existent:
+   <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="x">$comarca = $this-&gt;repositori-&gt;find(1);</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>Es crea un nou <code>Contacte</code>.  </li>
+<li>S’estableix la relació amb l’objecte <code>Comarca</code>.  </li>
+<li>Es persisteix el <code>Contacte</code> i s’executa <code>flush()</code>.</li>
+</ol>
+</li>
+</ul>
+<hr />
+<p><strong>- Cerca d’Entitats Relacionades</strong></p>
+<p>L’accés a les dades de l’entitat relacionada és directe des de l’entitat principal:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span>
+<span class="normal"><a href="#__codelineno-31-3">3</a></span>
+<span class="normal"><a href="#__codelineno-31-4">4</a></span>
+<span class="normal"><a href="#__codelineno-31-5">5</a></span>
+<span class="normal"><a href="#__codelineno-31-6">6</a></span>
+<span class="normal"><a href="#__codelineno-31-7">7</a></span>
+<span class="normal"><a href="#__codelineno-31-8">8</a></span>
+<span class="normal"><a href="#__codelineno-31-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a><span class="c1">// Obtenim l&#39;objecte Contacte amb ID = 1</span>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a><span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a>
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6"></a><span class="c1">// Accedim a l&#39;objecte Comarca relacionat i al seu nom</span>
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7"></a><span class="nv">$nomComarca</span> <span class="o">=</span> <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">getComarca</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getNom</span><span class="p">();</span>
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8"></a>
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>💡 <strong>Nota (Lazy Loading):</strong> Doctrine no recupera les dades de <code>Comarca</code> fins que no s’accedeix efectivament a elles (per exemple, quan s’executa <code>$contacte-&gt;getComarca()</code>).</p>
+<div class="admonition example">
+<p class="admonition-title">Laboratori</p>
+<p>Modifica el menú principal de l'aplicació perquè incloga les opcions següents, totes operatives:</p>
+<ul>
+<li><strong>Inici</strong>: ha d'enllaçar amb la ruta principal de l'aplicació i mostrar la pàgina d'inici.</li>
+<li><strong>Contacte</strong>: mostra la fitxa d’un contacte concret, utilitzant un identificador fix. En aquesta fitxa s'ha de visualitzar tota la informació disponible del contacte, incloent-hi el nom de la seua Comarca.</li>
+<li><strong>Llistar</strong>: mostra un llistat de tots els contactes registrats en la base de dades. La informació pot aparéixer resumida (nom, telèfon).</li>
+<li><strong>Afegir</strong>: permet inserir un nou contacte utilitzant un formulari Symfony. L’alta ha d’incloure també la selecció de la comarca relacionada.</li>
+</ul>
+</div>
+<hr />
+<h2 id="8-recursos-i-documentacio">8. Recursos i documentació</h2>
+<ul>
+<li>
+<p>Documentació oficial de Doctrine ORM<br />
+👉 <a href="https://symfony.com/doc/current/doctrine.html">https://symfony.com/doc/current/doctrine.html</a></p>
+</li>
+<li>
+<p>Documentació d’anotacions i tipus de dades<br />
+👉 <a href="https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/basic-mapping.html">https://www.doctrine-project.org/projects/doctrine-orm/en/current/reference/basic-mapping.html</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

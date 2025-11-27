@@ -1,0 +1,1937 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://iessimarrocicles.github.io/symfony/teoria/tema2/">
+      
+      
+        <link rel="prev" href="../../practica/practica1/">
+      
+      
+        <link rel="next" href="../../practica/practica2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>TEMA 2 — El patró MVC - SYMFONY</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tema-2-el-patro-mvc" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SYMFONY" class="md-header__button md-logo" aria-label="SYMFONY" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SYMFONY
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TEMA 2 — El patró MVC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SYMFONY" class="md-nav__button md-logo" aria-label="SYMFONY" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    SYMFONY
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducció
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1_annex1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annex 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema1_annex2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annex 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-el-patro-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és el patró MVC?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Què és el patró MVC?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-avantatges-del-patro-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Avantatges del patró MVC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-controladors-i-rutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Controladors i rutes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Controladors i rutes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-rutes-tradicionals-vs-rutes-amigables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Rutes tradicionals vs rutes amigables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-exemple-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Exemple bàsic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-comprovar-les-rutes-de-la-nostra-aplicacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Comprovar les rutes de la nostra aplicació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rutes-amb-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Rutes amb paràmetres
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Rutes amb paràmetres">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-configurar-rutes-a-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Configurar rutes a Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-configurar-rutes-a-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Configurar rutes a Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rutes-amb-parametres-amb-requisits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Rutes amb paràmetres amb requisits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rutes-amb-parametres-per-defecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Rutes amb paràmetres per defecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-exemple-del-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Exemple del controlador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-separacio-mvc-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Separació MVC real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parts-obsoletes-o-a-evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Parts obsoletes o a evitar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conclusio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Conclusió
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tema5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teoria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practica/practica5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plantilla
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-el-patro-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és el patró MVC?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Què és el patró MVC?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-avantatges-del-patro-mvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Avantatges del patró MVC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-controladors-i-rutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Controladors i rutes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Controladors i rutes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-rutes-tradicionals-vs-rutes-amigables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Rutes tradicionals vs rutes amigables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-exemple-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Exemple bàsic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-comprovar-les-rutes-de-la-nostra-aplicacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Comprovar les rutes de la nostra aplicació
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rutes-amb-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Rutes amb paràmetres
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Rutes amb paràmetres">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-configurar-rutes-a-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Configurar rutes a Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-configurar-rutes-a-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Configurar rutes a Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rutes-amb-parametres-amb-requisits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Rutes amb paràmetres amb requisits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rutes-amb-parametres-per-defecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Rutes amb paràmetres per defecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-exemple-del-controlador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Exemple del controlador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-separacio-mvc-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Separació MVC real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-parts-obsoletes-o-a-evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Parts obsoletes o a evitar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-conclusio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Conclusió
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tema-2-el-patro-mvc">📘 TEMA 2 — El patró MVC</h1>
+<h2 id="1-que-es-el-patro-mvc">1. Què és el patró MVC?</h2>
+<p><strong>MVC</strong> són les sigles de <strong>Model - Vista - Controlador</strong>, i és el patró d’arquitectura més utilitzat en el desenvolupament web.</p>
+<p>L’objectiu és <strong>separar les responsabilitats</strong> del codi per a aconseguir aplicacions més netes, modulars i fàcils de mantenir.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Descripció</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>Gestiona les dades i la lògica de negoci. Representa la informació que utilitza l’aplicació.</td>
+<td>Entitats de Doctrine com <code>Contacte</code>, <code>Usuari</code>, <code>Llibre</code>...</td>
+</tr>
+<tr>
+<td><strong>Vista</strong></td>
+<td>S’encarrega de mostrar la informació a l’usuari (interfície HTML).</td>
+<td>Fitxers <code>.html.twig</code> dins la carpeta <code>templates/</code></td>
+</tr>
+<tr>
+<td><strong>Controlador</strong></td>
+<td>Gestiona les peticions de l’usuari, interactua amb el model i tria quina vista mostrar.</td>
+<td>Classes dins <code>src/Controller/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="11-avantatges-del-patro-mvc">1.1. Avantatges del patró MVC</h3>
+<ul>
+<li>Codi <strong>més estructurat i mantenible</strong>.  </li>
+<li>Facilita el <strong>treball en equip</strong> (programador ↔ dissenyador).  </li>
+<li>Permet <strong>reutilitzar</strong> components i millorar la seguretat.  </li>
+</ul>
+<hr />
+<h2 id="2-controladors-i-rutes">2. Controladors i rutes</h2>
+<p>Un <strong>controlador</strong> és una funció o mètode PHP que rep la petició de l’usuari, la processa i envia una resposta (una pàgina HTML, JSON, etc.).</p>
+<p>Els controladors:</p>
+<ul>
+<li>Es guarden dins la carpeta <code>src/Controller/</code> del projecte.</li>
+<li>Normalment estan dins de <strong>classes</strong>, i aquestes solen tenir el sufix <code>Controller</code> (com <code>IniciController</code>).</li>
+<li>Cada mètode de la classe gestiona una <strong>ruta</strong> concreta.</li>
+</ul>
+<p>Exemple:  </p>
+<ul>
+<li>Un controlador anomenat <code>IniciController</code> pot tindre un mètode <code>inici()</code> que mostre un missatge de benvinguda quan l’usuari accedeix a la pàgina principal del web.</li>
+</ul>
+<p>Per a crear una pàgina en Symfony calen <strong>dos elements principals</strong>:</p>
+<ol>
+<li><strong>Una ruta</strong> → defineix l’URL que activarà el controlador.  </li>
+<li><strong>Un controlador</strong> → és la classe que conté el codi que es vol executar.</li>
+</ol>
+<hr />
+<h3 id="21-rutes-tradicionals-vs-rutes-amigables">2.1. Rutes tradicionals vs rutes amigables</h3>
+<ul>
+<li>
+<p><strong>Rutes tradicionals</strong>: Són les que utilitzaven els antics projectes PHP, on els paràmetres s’enviaven per l’URL amb <code>?</code>.<br />
+  Exemple: <code>http://localhost/contacte.php?codi=3</code><br />
+  👉 Accedeixen directament a un fitxer concret.</p>
+</li>
+<li>
+<p><strong>Rutes amigables</strong>: Són les que usa Symfony. Les dades es passen dins de la pròpia URL, sense extensions ni paràmetres visibles.<br />
+  Exemple: <code>http://localhost/contacte/3</code><br />
+  👉 Són més netes, segures i fàcils de recordar.</p>
+</li>
+</ul>
+<p>En Symfony <strong>totes les rutes són amigables</strong>, ja que passen pel sistema de ruteig intern i no accedeixen directament als fitxers.</p>
+<hr />
+<h3 id="22-exemple-basic">2.2. Exemple bàsic</h3>
+<p>Fitxer: <code>src/Controller/IniciController.php</code></p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">use</span> <span class="nx">Symfony\Component\Routing\Attribute\Route</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">class</span> <span class="nc">IniciController</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;inici&#39;</span><span class="p">)]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">inici</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="p">{</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;Benvingut/da al web de contactes&#39;</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="p">}</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">}</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Explicació:</strong></p>
+<ul>
+<li><code>namespace App\Controller;</code> defineix l'espai de noms dins la carpeta <code>src</code>.</li>
+<li><code>#[Route('/', name: 'inici')]</code> defineix la ruta <code>/</code> i el seu nom intern.</li>
+<li>El mètode <code>inici()</code> retorna un objecte <code>Response</code>, que Symfony enviarà al navegador.</li>
+</ul>
+<blockquote>
+<p>🔸 A partir de Symfony 6, les rutes es defineixen amb <strong>atributs <code>#[Route]</code></strong> (no amb anotacions <code>@Route</code>, que ja és obsolet).</p>
+</blockquote>
+<hr />
+<h3 id="23-comprovar-les-rutes-de-la-nostra-aplicacio">2.3. Comprovar les rutes de la nostra aplicació</h3>
+<p>Utilitzant la consola de Symfony (arxiu <code>bin/console</code> del nostre projecte) podem comprovar quines rutes hi ha actualment definides en la nostra aplicació, mitjançant aquesta instrucció:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>php<span class="w"> </span>bin/console<span class="w"> </span>debug:router
+</span></code></pre></div></td></tr></table></div>
+<p>Aquesta ordre mostrarà el llistat de rutes, indicant per a cadascuna:</p>
+<ul>
+<li>El <strong>nom de la ruta</strong></li>
+<li>El <strong>camí (path)</strong> associat</li>
+<li>El <strong>controlador i mètode</strong> que s’executarà</li>
+</ul>
+<p>A més de les rutes que hàgem definit nosaltres (per exemple, la nostra ruta arrel <code>/</code>), apareixeran altres rutes creades automàticament per Symfony per a funcions internes, com les del <em>profiler</em>, utilitzades per a rastrejar i obtindre detalls de les peticions realitzades durant la depuració.</p>
+<blockquote>
+<p>ℹ️ En aquest curs no entrarem en detall sobre aquestes rutes internes, ja que s’utilitzen principalment per a tasques de test i depuració avançada.</p>
+</blockquote>
+<hr />
+<h2 id="3-rutes-amb-parametres">3. Rutes amb paràmetres</h2>
+<p>Podem afegir valors dinàmics dins la ruta perquè el controlador els reba com a paràmetres:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="o">...</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">)]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">{</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="o">...</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Quan accedim a <code>/contacte/3</code> el navegador mostrarà:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Has<span class="w"> </span>consultat<span class="w"> </span>el<span class="w"> </span>contacte<span class="w"> </span>amb<span class="w"> </span>codi<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="31-configurar-rutes-a-windows">3.1. Configurar rutes a Windows</h3>
+<p>Per a que funcionen les rutes amigables en Symfony hem de generar l’arxiu <code>.htaccess</code> i assegurar que <code>mod_rewrite</code> està activat.</p>
+<p><strong>Pas 1. Generar <code>.htaccess</code> amb Apache Pack</strong></p>
+<p>Obri la terminal (PowerShell) dins de la carpeta del projecte:</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">cd </span><span class="s2">&quot;C:\xampp\htdocs\symfony\nom_projecte&quot;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">composer</span> <span class="n">config</span> <span class="n">extra</span><span class="p">.</span><span class="n">symfony</span><span class="p">.</span><span class="n">allow-contrib</span> <span class="n">true</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">composer</span> <span class="n">require</span> <span class="n">symfony</span><span class="p">/</span><span class="n">apache-pack</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Comprova que s’ha creat el fitxer: <code>C:\xampp\htdocs\symfony\nom_projecte\public\.htaccess</code></p>
+<p><strong>Pas 2. Activar mod_rewrite en XAMPP</strong></p>
+<p>Obri el fitxer: <code>C:\xampp\apache\conf\httpd.conf</code></p>
+<p>Localitza i descomenta (traure #):</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">LoadModule</span> <span class="n">rewrite_module</span> <span class="n">modules</span><span class="p">/</span><span class="n">mod_rewrite</span><span class="p">.</span><span class="n">so</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Guarda i reinicia Apache des del XAMPP Control Panel.</p>
+<hr />
+<h3 id="32-configurar-rutes-a-linux">3.2. Configurar rutes a Linux</h3>
+<p>Per a que funcionen les rutes amigables en Symfony hem de generar l’arxiu <code>.htaccess</code> i assegurar que <code>mod_rewrite</code> està activat.</p>
+<p><strong>Pas 1. Generar <code>.htaccess</code> amb Apache Pack</strong></p>
+<p>Situa’t a la carpeta del projecte:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>/var/www/html/symfony/nom_projecte
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>composer<span class="w"> </span>config<span class="w"> </span>extra.symfony.allow-contrib<span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>composer<span class="w"> </span>require<span class="w"> </span>symfony/apache-pack
+</span></code></pre></div></td></tr></table></div>
+<p>Comprova que s’ha creat el fitxer: <code>/var/www/html/symfony/nom_projecte/public/.htaccess</code></p>
+<p><strong>Pas 2. Activar mod_rewrite en Apache</strong></p>
+<p>Activa el mòdul:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>a2enmod<span class="w"> </span>rewrite
+</span></code></pre></div></td></tr></table></div>
+<p>Reincia el servidor Apache:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>o
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>sudo<span class="w"> </span>service<span class="w"> </span>apache2<span class="w"> </span>restart
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Atenció amb les rutes amigables</p>
+<p>Recordar repetir aquestes instruccions en tots els projectes Symfony que utilitzen rutes amigables.</p>
+</div>
+<hr />
+<h3 id="33-rutes-amb-parametres-amb-requisits">3.3. Rutes amb paràmetres amb requisits</h3>
+<p>En Symfony, podem <strong>imposar restriccions</strong> als valors dels paràmetres de la ruta utilitzant <strong>expressions regulars</strong>.  </p>
+<p>Això es fa amb l’opció <code>requirements:</code> dins de l’atribut <code>#[Route]</code>.</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">8</a></span>
+<span class="normal"><a href="#__codelineno-9-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">])]</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="p">{</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="p">}</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>🧠 <strong>Explicació:</strong></p>
+<ul>
+<li>El paràmetre <code>{codi}</code> només serà vàlid si és un <strong>número</strong> (<code>\d+</code> indica un o més dígits).  </li>
+<li>Si l’usuari escriu <code>/contacte/abc</code>, Symfony mostrarà un <strong>error 404</strong>, ja que no compleix el requisit.  </li>
+<li>Es poden definir diversos requisits per a diferents paràmetres.</li>
+</ul>
+<p>Altres exemples de requisits:</p>
+<table>
+<thead>
+<tr>
+<th>Requisit</th>
+<th>Significat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[a-zA-Z]+</code></td>
+<td>Només lletres</td>
+</tr>
+<tr>
+<td><code>[0-9]{4}</code></td>
+<td>Exactament 4 dígits</td>
+</tr>
+<tr>
+<td><code>[A-Z]{3}\d{2}</code></td>
+<td>3 majúscules i 2 números (p. ex. codis)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="34-rutes-amb-parametres-per-defecte">3.4. Rutes amb paràmetres per defecte</h3>
+<p>Podem indicar <strong>valors per defecte</strong> per als paràmetres d’una ruta amb l’opció <code>defaults:</code>.<br />
+Això permet que la ruta siga vàlida encara que no es passe cap valor.</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span>
+<span class="normal"><a href="#__codelineno-10-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/blog/{pagina}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;llista_blog&#39;</span><span class="p">,</span> <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">])]</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">llista</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$pagina</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">{</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>    <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Estàs a la pàgina </span><span class="si">$pagina</span><span class="s2"> del blog&quot;</span><span class="p">);</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="p">}</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>🧠 <strong>Explicació:</strong></p>
+<ul>
+<li>Si accedim a <code>/blog/3</code>, mostrarà “Estàs a la pàgina 3 del blog”.  </li>
+<li>Si accedim a <code>/blog/</code>, Symfony assignarà automàticament <code>pagina = 1</code>.  </li>
+<li>Els valors per defecte eviten errors i fan les rutes més flexibles.</li>
+</ul>
+<p>També es poden combinar <strong>defaults</strong> i <strong>requirements</strong>:</p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="s1">&#39;/blog/{pagina}&#39;</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;llista_blog&#39;</span><span class="p">,</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>    <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">]</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="p">)]</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>🧩 Així assegurem que el paràmetre <code>pagina</code> siga un número i, si no es proporciona, prenga el valor <code>1</code> per defecte.</p>
+<hr />
+<h2 id="4-exemple-del-controlador">4. Exemple del controlador</h2>
+<p>A continuació veurem un exemple complet d’un controlador amb <strong>dues rutes amb el mateix patró</strong> (<code>/contacte/{valor}</code>), però diferenciades per <strong>tipus de paràmetre</strong>:</p>
+<ul>
+<li>Si el paràmetre és <strong>numèric</strong>, es mostrarà la <em>fitxa</em> del contacte amb eixe codi.  </li>
+<li>Si el paràmetre conté <strong>text</strong>, es farà una <em>cerca</em> de contactes pel nom.</li>
+</ul>
+<p>Abans d’utilitzar una base de dades, simularem les dades amb un <strong>array local</strong> i mostrarem el contacte amb el codi indicat.</p>
+<p><strong>Fitxer:</strong> <code>src/Controller/ContacteController.php</code></p>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span>
+<span class="normal"><a href="#__codelineno-12-35">35</a></span>
+<span class="normal"><a href="#__codelineno-12-36">36</a></span>
+<span class="normal"><a href="#__codelineno-12-37">37</a></span>
+<span class="normal"><a href="#__codelineno-12-38">38</a></span>
+<span class="normal"><a href="#__codelineno-12-39">39</a></span>
+<span class="normal"><a href="#__codelineno-12-40">40</a></span>
+<span class="normal"><a href="#__codelineno-12-41">41</a></span>
+<span class="normal"><a href="#__codelineno-12-42">42</a></span>
+<span class="normal"><a href="#__codelineno-12-43">43</a></span>
+<span class="normal"><a href="#__codelineno-12-44">44</a></span>
+<span class="normal"><a href="#__codelineno-12-45">45</a></span>
+<span class="normal"><a href="#__codelineno-12-46">46</a></span>
+<span class="normal"><a href="#__codelineno-12-47">47</a></span>
+<span class="normal"><a href="#__codelineno-12-48">48</a></span>
+<span class="normal"><a href="#__codelineno-12-49">49</a></span>
+<span class="normal"><a href="#__codelineno-12-50">50</a></span>
+<span class="normal"><a href="#__codelineno-12-51">51</a></span>
+<span class="normal"><a href="#__codelineno-12-52">52</a></span>
+<span class="normal"><a href="#__codelineno-12-53">53</a></span>
+<span class="normal"><a href="#__codelineno-12-54">54</a></span>
+<span class="normal"><a href="#__codelineno-12-55">55</a></span>
+<span class="normal"><a href="#__codelineno-12-56">56</a></span>
+<span class="normal"><a href="#__codelineno-12-57">57</a></span>
+<span class="normal"><a href="#__codelineno-12-58">58</a></span>
+<span class="normal"><a href="#__codelineno-12-59">59</a></span>
+<span class="normal"><a href="#__codelineno-12-60">60</a></span>
+<span class="normal"><a href="#__codelineno-12-61">61</a></span>
+<span class="normal"><a href="#__codelineno-12-62">62</a></span>
+<span class="normal"><a href="#__codelineno-12-63">63</a></span>
+<span class="normal"><a href="#__codelineno-12-64">64</a></span>
+<span class="normal"><a href="#__codelineno-12-65">65</a></span>
+<span class="normal"><a href="#__codelineno-12-66">66</a></span>
+<span class="normal"><a href="#__codelineno-12-67">67</a></span>
+<span class="normal"><a href="#__codelineno-12-68">68</a></span>
+<span class="normal"><a href="#__codelineno-12-69">69</a></span>
+<span class="normal"><a href="#__codelineno-12-70">70</a></span>
+<span class="normal"><a href="#__codelineno-12-71">71</a></span>
+<span class="normal"><a href="#__codelineno-12-72">72</a></span>
+<span class="normal"><a href="#__codelineno-12-73">73</a></span>
+<span class="normal"><a href="#__codelineno-12-74">74</a></span>
+<span class="normal"><a href="#__codelineno-12-75">75</a></span>
+<span class="normal"><a href="#__codelineno-12-76">76</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cp">&lt;?php</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="k">use</span> <span class="nx">Symfony\Component\Routing\Attribute\Route</span><span class="p">;</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="k">class</span> <span class="nc">ContacteController</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="p">{</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a>    <span class="c1">// Llista de contactes de mostra</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>    <span class="k">private</span> <span class="nv">$contactes</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Salvador Sala&quot;</span><span class="p">,</span> 
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;638961244&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salvasala@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Anna Llopis&quot;</span><span class="p">,</span> 
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;669332004&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;annallopis@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Marc Sanchis&quot;</span><span class="p">,</span> 
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;962286040&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;marcsanchis@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Laura Palop&quot;</span><span class="p">,</span> 
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;663568890&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;laurapalop@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20"></a>    <span class="p">];</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21"></a>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22"></a>    <span class="c1">// --- Mètode 1: Mostrar la fitxa d’un contacte pel seu codi ---</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23"></a>    <span class="c1">// Ruta activa quan el paràmetre és numèric (\\d+)</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\\d+&#39;</span><span class="p">])]</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26"></a>    <span class="p">{</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> 
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28"></a>            <span class="k">function</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">)</span> <span class="nd">use</span> <span class="p">(</span><span class="nv">$codi</span><span class="p">){</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29"></a>                <span class="nd">return</span> <span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;codi&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$codi</span><span class="p">;</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30"></a>            <span class="p">}</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31"></a>        <span class="p">);</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32"></a>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$resultat</span><span class="p">)</span> 
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34"></a>            <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;Contacte no trobat&#39;</span><span class="p">);</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35"></a>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36"></a>        <span class="c1">// Torna 1r element</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38"></a>        <span class="nv">$resp</span> <span class="o">=</span> <span class="s2">&quot;&lt;ul&gt;</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39"></a><span class="s2">                    &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40"></a><span class="s2">                    &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;telefon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41"></a><span class="s2">                    &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42"></a><span class="s2">                &lt;/ul&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43"></a>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;body&gt;</span><span class="si">$resp</span><span class="s2">&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">);</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45"></a>    <span class="p">}</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46"></a>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47"></a>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48"></a>    <span class="c1">// --- Mètode 2: Buscar contactes pel nom ---</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49"></a>    <span class="c1">// Mateixa ruta /contacte/{text}, però amb requirement diferent (només lletres)</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{text}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;buscar_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;[a-zA-Z]+&#39;</span><span class="p">])]</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">buscar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52"></a>    <span class="p">{</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> 
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54"></a>            <span class="k">function</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">)</span> <span class="nd">use</span> <span class="p">(</span><span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55"></a>                <span class="nd">return</span> <span class="nd">stripos</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">[</span><span class="s2">&quot;nom&quot;</span><span class="p">],</span> <span class="nv">$text</span><span class="p">)</span> <span class="o">!==</span> <span class="nd">false</span><span class="p">;</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56"></a>            <span class="p">}</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57"></a>        <span class="p">);</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58"></a>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59"></a>        <span class="nd">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$resultat</span><span class="p">)</span> 
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60"></a>            <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;No s&#39;han trobat contactes amb &#39;</span><span class="si">$text</span><span class="s2">&#39;.&quot;</span><span class="p">);</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61"></a>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62"></a>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63"></a>        <span class="nv">$resposta</span> <span class="o">=</span> <span class="s2">&quot;&lt;h2&gt;Resultats de la cerca: &#39;</span><span class="si">$text</span><span class="s2">&#39;&lt;/h2&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64"></a>        <span class="nd">foreach</span> <span class="p">(</span><span class="nv">$resultat</span> <span class="k">as</span> <span class="nv">$contacte</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65"></a>            <span class="nv">$resposta</span> <span class="o">.=</span> <span class="s2">&quot;&lt;ul&gt;</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66"></a><span class="s2">                            &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67"></a><span class="s2">                            &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;telefon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68"></a><span class="s2">                            &lt;li&gt;</span><span class="si">{</span><span class="nv">$contacte</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69"></a><span class="s2">                          &lt;/ul&gt;&quot;</span><span class="p">;</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70"></a>        <span class="p">}</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71"></a>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72"></a>        <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;body&gt;</span><span class="si">$resposta</span><span class="s2">&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">);</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73"></a>
+</span><span id="__span-12-74"><a id="__codelineno-12-74" name="__codelineno-12-74"></a>    <span class="p">}</span>
+</span><span id="__span-12-75"><a id="__codelineno-12-75" name="__codelineno-12-75"></a><span class="p">}</span>
+</span><span id="__span-12-76"><a id="__codelineno-12-76" name="__codelineno-12-76"></a><span class="cp">?&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<p>🧠 <strong>Explicació del funcionament</strong></p>
+<ul>
+<li>Symfony analitza l’URL <code>/contacte/{param}</code> i comprova quin <strong>requirement</strong> compleix:<ul>
+<li>Si és numèric (<code>\\d+</code>), crida al mètode <code>fitxa()</code>.</li>
+<li>Si conté lletres (<code>[a-zA-Z]+</code>), crida al mètode <code>buscar()</code>.</li>
+</ul>
+</li>
+<li>D’aquesta manera <strong>no hi ha conflicte</strong> encara que la ruta siga la mateixa.</li>
+<li>L’avantatge és que l’usuari pot accedir amb una sola estructura d’URL:<ul>
+<li><code>/contacte/3</code> → mostra el contacte amb codi 3.  </li>
+<li><code>/contacte/anna</code> → busca “anna” dins dels noms.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="5-separacio-mvc-real">5. Separació MVC real</h2>
+<p>Els primers exemples encara barregen <strong>vista i controlador</strong>, ja que el text HTML està dins del mètode.</p>
+<p>En un projecte real, el controlador només ha de <strong>passar dades</strong> a una <strong>vista Twig</strong> per a renderitzar el resultat. Ho veurem a tema següent.</p>
+<p>Flux bàsic:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>Usuari<span class="w"> </span>→<span class="w"> </span>Controlador<span class="w"> </span>→<span class="w"> </span>Model<span class="w"> </span>→<span class="w"> </span>Vista<span class="w"> </span><span class="o">(</span>HTML<span class="o">)</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="6-parts-obsoletes-o-a-evitar">6. Parts obsoletes o a evitar</h2>
+<table>
+<thead>
+<tr>
+<th>Obsolet</th>
+<th>Substitució actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Versions Symfony &lt; 5.4</td>
+<td>Treballar amb Symfony 6.x o superior</td>
+</tr>
+<tr>
+<td>PHP 7.x</td>
+<td>Utilitzar PHP 8.1 o superior</td>
+</tr>
+<tr>
+<td><code>@Route("/ruta")</code></td>
+<td><code>#[Route("/ruta")]</code></td>
+</tr>
+<tr>
+<td>Retornar HTML directament amb <code>new Response()</code></td>
+<td>Fer servir <code>$this-&gt;render()</code> amb Twig</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-conclusio">7. Conclusió</h2>
+<p>El patró <strong>MVC</strong> és la base del desenvolupament amb Symfony:</p>
+<ul>
+<li>Separa clarament la <strong>lògica</strong>, <strong>les dades</strong> i <strong>la presentació</strong>.</li>
+<li>Millora l’escalabilitat i la seguretat del projecte.</li>
+<li>És compatible amb bones pràctiques com la injecció de dependències i l’ús de serveis.</li>
+</ul>
+<blockquote>
+<p>Symfony implementa el patró MVC de manera nativa, i cada part del framework està pensada per a respectar aquesta arquitectura.</p>
+</blockquote>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
