@@ -1313,12 +1313,12 @@
 
 <h1 id="tema-1-introduccio-a-symfony">📘 TEMA 1 — Introducció a Symfony</h1>
 <h2 id="1-que-es-un-framework">1. Què és un framework?</h2>
-<p>Un <strong>framework</strong> és una eina que proporciona un conjunt d’elements i regles per a facilitar el <strong>desenvolupament d’aplicacions web</strong>.  </p>
+<p>Un <strong>framework</strong> és una eina que proporciona un conjunt d’elements i regles per a facilitar el desenvolupament d’aplicacions web.  </p>
 <p>En el cas dels <strong>frameworks PHP</strong>, ofereixen:</p>
 <ul>
-<li>Una <strong>estructura de treball</strong> predefinida (normalment basada en el patró <strong>MVC</strong>).  </li>
-<li>Eines per a crear i gestionar <strong>models de dades</strong>, <strong>controladors</strong> i <strong>vistes</strong>.  </li>
-<li>Suport per a <strong>rutes</strong>, <strong>injecció de dependències</strong>, <strong>seguretat</strong> i <strong>testejos automàtics</strong>.  </li>
+<li>Una estructura de treball predefinida (normalment basada en el patró MVC).  </li>
+<li>Eines per a crear i gestionar models de dades, controladors i vistes.  </li>
+<li>Suport per a rutes, injecció de dependències, seguretat i testejos automàtics.  </li>
 </ul>
 <p>Això permet que el codi siga més <strong>organitzat</strong>, <strong>modular</strong> i <strong>fàcil de mantindre</strong>.</p>
 <hr />
@@ -1468,11 +1468,11 @@
 </span></code></pre></div></td></tr></table></div>
 <p>Instal·la directament:</p>
 <ul>
-<li><strong>Twig</strong></li>
-<li><strong>Doctrine</strong></li>
-<li><strong>Security</strong></li>
-<li><strong>Mailer</strong></li>
-<li><strong>Routing</strong></li>
+<li>Twig</li>
+<li>Doctrine</li>
+<li>Security</li>
+<li>Mailer</li>
+<li>Routing</li>
 <li>Altres paquets básics del framework.</li>
 </ul>
 <p>💡 És la <strong>manera moderna</strong> i <strong>substitueix els antics esquelets</strong> (<code>website-skeleton</code> i <code>symfony/skeleton</code>).</p>
@@ -1507,12 +1507,12 @@
 <div class="admonition danger">
 <p class="admonition-title">Projecte de proves</p>
 <p>Al llarg de les explicacions teòriques crearem un projecte mínim anomenat <strong>agenda</strong>, que utilitzarem exclusivament per a fer proves i exemples de classe. </p>
-<p>Aquest projecte inclourà únicament els components bàsics indicats <code>orm</code>, <code>twig</code>, <code>twig-bundle</code>, <code>asset</code> i <code>asset-mapper</code>, i ens servirà per a entendre pas a pas el funcionament de Symfony i per consolidar els coneixements apresos.</p>
+<p>Aquest projecte inclourà únicament els components bàsics indicats anteriorment, i ens servirà per a entendre pas a pas el funcionament de Symfony i per consolidar els coneixements apresos.</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">Projecte de pràctiques</p>
 <p>Paral·lelament, desenvoluparem un segon projecte, que servirà com a base per a les pràctiques avaluables del curs.</p>
-<p>Aquest projecte partirà d'un esquelet mínim i els components bàsics <code>orm</code> i <code>twig</code>. Tindreu més informació sobre aquest projecte en les pràctiques específiques de cada tema.</p>
+<p>Aquest projecte partirà d'un esquelet mínim i els components bàsics indicats anteriorment. Tindreu més informació sobre aquest projecte en les pràctiques específiques de cada tema.</p>
 </div>
 <hr />
 <h2 id="8-estructura-general-dun-projecte">8. Estructura general d’un projecte</h2>
@@ -1537,7 +1537,7 @@
 <span class="normal"><a href="#__codelineno-3-17">17</a></span>
 <span class="normal"><a href="#__codelineno-3-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>projecte/
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>│
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>├──<span class="w"> </span>assets/<span class="w">               </span><span class="c1"># Conté els arxius fonts d&#39;estils, imatges...</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>├──<span class="w"> </span>assets/<span class="w">               </span><span class="c1"># Conté els arxius fonts d&#39;estils, javascripts, imatges...</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>├──<span class="w"> </span>bin/<span class="w">                  </span><span class="c1"># Conté els scripts executables, com `console`</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>├──<span class="w"> </span>config/<span class="w">               </span><span class="c1"># Fitxers de configuració de Symfony i serveis</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>├──<span class="w"> </span>migrations/<span class="w">           </span><span class="c1"># Fitxers de migracions de base de dades (Doctrine)</span>
