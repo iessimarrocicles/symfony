@@ -1119,19 +1119,27 @@
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>Explicació:</strong></p>
-<p><strong>1. namespace App\Controller;</strong>
-    - Indica l’espai de noms on es troba este controlador dins del projecte Symfony (carpeta src/Controller).
-    - Serveix per a organitzar el codi i evitar conflictes de noms.
-<strong>2. L'atribut #[Route(...)]</strong>
-    - / → Ruta que s’atén quan accedim a la pàgina principal.
-    - name: 'inici' → Nom intern que s’utilitza per generar URLs dins del projecte.
-    - methods: ['GET'] → Llista de mètodes HTTP que accepta esta ruta.
-        - GET → llegir dades
-        - POST → crear
-        - PUT → actualitzar
-        - DELETE → eliminar
-<strong>3. Mètodo inici()</strong>
-    - Retorna un objecte Response, que Symfony enviarà al navegador.</p>
+<p><strong>1. namespace App\Controller;</strong></p>
+<ul>
+<li>Indica l’espai de noms on es troba este controlador dins del projecte Symfony (carpeta src/Controller).</li>
+<li>Serveix per a organitzar el codi i evitar conflictes de noms.</li>
+</ul>
+<p><strong>2. L'atribut #[Route(...)]</strong></p>
+<ul>
+<li>/ → Ruta que s’atén quan accedim a la pàgina principal.</li>
+<li>name: 'inici' → Nom intern que s’utilitza per generar URLs dins del projecte.</li>
+<li>methods: ['GET'] → Llista de mètodes HTTP que accepta esta ruta.<ul>
+<li>GET → llegir dades</li>
+<li>POST → crear</li>
+<li>PUT → actualitzar</li>
+<li>DELETE → eliminar</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Mètodo inici()</strong></p>
+<ul>
+<li>Retorna un objecte Response, que Symfony enviarà al navegador.</li>
+</ul>
 <blockquote>
 <p>💡 En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional.</p>
 <p>⚠️ A partir de Symfony 6, les rutes es defineixen amb <strong>atributs <code>#[Route]</code></strong> (no amb anotacions <code>@Route</code>, que ja és obsolet).</p>
@@ -1266,7 +1274,7 @@
 <p>🧠 <strong>Explicació:</strong></p>
 <ul>
 <li>El paràmetre <code>{codi}</code> només serà vàlid si és un <strong>número</strong> (<code>\d+</code> indica un o més dígits).  </li>
-<li>Si l’usuari escriu <code>/contacte/abc</code>, Symfony mostrarà un <strong>error 404</strong>, ja que no compleix el requisit.  </li>
+<li>Si l’usuari escriu <code>/contactes/abc</code>, Symfony mostrarà un <strong>error 404</strong>, ja que no compleix el requisit.  </li>
 <li>Es poden definir diversos requisits per a diferents paràmetres.</li>
 </ul>
 <p>Altres exemples de requisits:</p>
@@ -1306,18 +1314,18 @@ Això permet que la ruta siga vàlida encara que no es passe cap valor.</p>
 <span class="normal"><a href="#__codelineno-10-8">8</a></span>
 <span class="normal"><a href="#__codelineno-10-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/blogs/{pagina}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;blogs_llista&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span> <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">])]</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">llista</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$pagina</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span> <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">])]</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">{</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>    <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Estàs a la pàgina </span><span class="si">$pagina</span><span class="s2"> del blog&quot;</span><span class="p">);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>    <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="p">}</span>
 </span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>🧠 <strong>Explicació:</strong></p>
 <ul>
-<li>Si accedim a <code>/blogs/3</code>, mostrarà “Estàs a la pàgina 3 del blog”.  </li>
-<li>Si accedim a <code>/blogs/</code>, Symfony assignarà automàticament <code>pagina = 1</code>.  </li>
+<li>Si accedim a <code>/contactes/3</code>, mostrarà “Has consultat el contacte amb codi 3”.  </li>
+<li>Si accedim a <code>/contactes/</code>, Symfony assignarà automàticament <code>codi = 1</code>.  </li>
 <li>Els valors per defecte eviten errors i fan les rutes més flexibles.</li>
 </ul>
 <p>També es poden combinar <strong>defaults</strong> i <strong>requirements</strong>:</p>
@@ -1334,16 +1342,16 @@ Això permet que la ruta siga vàlida encara que no es passe cap valor.</p>
 <span class="normal"><a href="#__codelineno-11-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="s1">&#39;/blogs/{pagina}&#39;</span><span class="p">,</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;llista_blog&#39;</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa&#39;</span><span class="p">,</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>    <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">],</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>    <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pagina&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">]</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    <span class="nx">defaults</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>    <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">]</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="p">)]</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>🧩 Així assegurem que el paràmetre <code>pagina</code> siga un número i, si no es proporciona, prenga el valor <code>1</code> per defecte.</p>
+<p>🧩 Així assegurem que el paràmetre <code>codi</code> siga un número i, si no es proporciona, prenga el valor <code>1</code> per defecte.</p>
 <hr />
 <h2 id="4-exemple-del-controlador">4. Exemple del controlador</h2>
 <p>A continuació veurem un exemple complet d’un controlador amb <strong>dues rutes amb el mateix patró</strong> (<code>/contactes/{valor}</code>), però diferenciades per <strong>tipus de paràmetre</strong>:</p>
@@ -1519,8 +1527,8 @@ Això permet que la ruta siga vàlida encara que no es passe cap valor.</p>
 </li>
 <li>D’aquesta manera <strong>no hi ha conflicte</strong> encara que la ruta siga la mateixa.</li>
 <li>L’avantatge és que l’usuari pot accedir amb una sola estructura d’URL:<ul>
-<li><code>/contacte/3</code> → mostra el contacte amb codi 3.  </li>
-<li><code>/contacte/anna</code> → busca “anna” dins dels noms.</li>
+<li><code>/contactes/3</code> → mostra el contacte amb codi 3.  </li>
+<li><code>/contactes/anna</code> → busca “anna” dins dels noms.</li>
 </ul>
 </li>
 </ul>
