@@ -1119,27 +1119,13 @@
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>Explicació:</strong></p>
-<ul>
-<li><code>namespace App\Controller;</code> defineix l'espai de noms dins la carpeta <code>src</code>.</li>
-<li><code>#[Route('/', name: 'inici', methods: ['GET'])]</code> defineix la ruta <code>/</code>, el seu nom intern i el mètodo HTTP.</li>
-<li>El mètode <code>inici()</code> retorna un objecte <code>Response</code>, que Symfony enviarà al navegador.</li>
-</ul>
-<p>En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional. Els mètodes HTTP que utilitzarem seràn:</p>
-<ul>
-<li>GET → llegir dades</li>
-<li>POST → crear</li>
-<li>PUT → actualitzar</li>
-<li>
-<p>DELETE → eliminar</p>
-</li>
-<li>
-<p>namespace App\Controller;</p>
-<ul>
+<ol>
+<li><strong>namespace App\Controller;</strong><ul>
 <li>Indica l’espai de noms on es troba este controlador dins del projecte Symfony (carpeta src/Controller).</li>
 <li>Serveix per a organitzar el codi i evitar conflictes de noms.</li>
 </ul>
 </li>
-<li>L'atribut #[Route(...)]<ul>
+<li><strong>L'atribut #[Route(...)]</strong><ul>
 <li>/ → Ruta que s’atén quan accedim a la pàgina principal.</li>
 <li>name: 'inici' → Nom intern que s’utilitza per generar URLs dins del projecte.</li>
 <li>methods: ['GET'] → Llista de mètodes HTTP que accepta esta ruta.<ul>
@@ -1151,12 +1137,12 @@
 </li>
 </ul>
 </li>
-<li>Mètodo inici()<ul>
-<li>Retorna un objecte <code>Response</code>, que Symfony enviarà al navegador.</li>
+<li><strong>Mètodo inici()</strong><ul>
+<li>Retorna un objecte Response, que Symfony enviarà al navegador.</li>
 </ul>
 </li>
-</ul>
-<p>En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional. Els mètodes HTTP que utilitzarem seràn:</p>
+</ol>
+<p>En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional.</p>
 <blockquote>
 <p>🔸 A partir de Symfony 6, les rutes es defineixen amb <strong>atributs <code>#[Route]</code></strong> (no amb anotacions <code>@Route</code>, que ja és obsolet).</p>
 </blockquote>
