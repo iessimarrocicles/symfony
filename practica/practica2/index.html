@@ -863,6 +863,7 @@
 <li>Crea una classe anomenada <code>IniciController</code>.</li>
 <li>Afig un <strong>mètode</strong> anomenat <code>inici</code>, associat a la <strong>ruta arrel</strong> <code>/</code>.</li>
 <li>Dona-li el <strong>nom de ruta</strong> <code>inici</code>.</li>
+<li>Utilitza el mètodo <code>GET</code>.</li>
 <li>Mostra com a <strong>resposta</strong> el missatge següent:</li>
 </ol>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Projecte<span class="w"> </span>Gestió<span class="w"> </span>Tenda<span class="w"> </span>de<span class="w"> </span><span class="o">[</span>nom<span class="w"> </span>i<span class="w"> </span>cognoms<span class="w"> </span>de<span class="w"> </span>l<span class="err">&#39;</span>alumne<span class="o">]</span>
@@ -871,8 +872,9 @@
 <h3 id="controlador-secciocontroller">Controlador <strong>SeccioController</strong></h3>
 <ol>
 <li>Crea una classe anomenada <code>SeccioController</code>.</li>
-<li>Afig un <strong>mètode</strong> anomenat <code>seccio</code>, associat a la <strong>ruta</strong> <code>/seccio/{codi}</code>.</li>
-<li>Dona-li el <strong>nom de ruta</strong> <code>dades_seccio</code>.</li>
+<li>Definir una ruta base i nom base a nivell de controlador.</li>
+<li>Afig un <strong>mètode</strong> anomenat <code>voreSeccio</code>, associat a la <strong>ruta</strong> <code>/{codi}</code>.</li>
+<li>Dona-li el <strong>nom de ruta</strong> <code>seccions_dades</code>.</li>
 <li>El paràmetre <code>{codi}</code> serà un <strong>número identificatiu</strong> d’una secció.</li>
 </ol>
 <p>A la mateixa classe, declara un <strong>array</strong> amb quatre seccions, cadascuna amb els següents camps:</p>
