@@ -1110,7 +1110,7 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">class</span> <span class="nc">IniciController</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">{</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;inici&#39;</span><span class="p">)]</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;inici&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">inici</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="p">{</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s1">&#39;Benvingut/da al web de contactes&#39;</span><span class="p">);</span>
@@ -1121,9 +1121,42 @@
 <p><strong>Explicació:</strong></p>
 <ul>
 <li><code>namespace App\Controller;</code> defineix l'espai de noms dins la carpeta <code>src</code>.</li>
-<li><code>#[Route('/', name: 'inici')]</code> defineix la ruta <code>/</code> i el seu nom intern.</li>
+<li><code>#[Route('/', name: 'inici', methods: ['GET'])]</code> defineix la ruta <code>/</code>, el seu nom intern i el mètodo HTTP.</li>
 <li>El mètode <code>inici()</code> retorna un objecte <code>Response</code>, que Symfony enviarà al navegador.</li>
 </ul>
+<p>En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional. Els mètodes HTTP que utilitzarem seràn:</p>
+<ul>
+<li>GET → llegir dades</li>
+<li>POST → crear</li>
+<li>PUT → actualitzar</li>
+<li>
+<p>DELETE → eliminar</p>
+</li>
+<li>
+<p>namespace App\Controller;</p>
+<ul>
+<li>Indica l’espai de noms on es troba este controlador dins del projecte Symfony (carpeta src/Controller).</li>
+<li>Serveix per a organitzar el codi i evitar conflictes de noms.</li>
+</ul>
+</li>
+<li>L'atribut #[Route(...)]<ul>
+<li>/ → Ruta que s’atén quan accedim a la pàgina principal.</li>
+<li>name: 'inici' → Nom intern que s’utilitza per generar URLs dins del projecte.</li>
+<li>methods: ['GET'] → Llista de mètodes HTTP que accepta esta ruta.<ul>
+<li>GET → llegir dades</li>
+<li>POST → crear</li>
+<li>PUT → actualitzar</li>
+<li>DELETE → eliminar</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mètodo inici()<ul>
+<li>Retorna un objecte <code>Response</code>, que Symfony enviarà al navegador.</li>
+</ul>
+</li>
+</ul>
+<p>En Symfony no és obligatori posar methods: [...] en cada ruta, però en aplicacions reals (sobretot si utilitzes Twig o API REST) és una molt bona pràctica definir quin mètode HTTP accepta cada acció del controlador. Això fa el codi més segur, més clar i més professional. Els mètodes HTTP que utilitzarem seràn:</p>
 <blockquote>
 <p>🔸 A partir de Symfony 6, les rutes es defineixen amb <strong>atributs <code>#[Route]</code></strong> (no amb anotacions <code>@Route</code>, que ja és obsolet).</p>
 </blockquote>
@@ -1154,18 +1187,30 @@
 <span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="o">...</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">)]</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contactes&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;contactes_&#39;</span><span class="p">)]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">{</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="o">...</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="cp">?&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="o">...</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="p">{</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="p">}</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="o">...</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Quan accedim a <code>/contacte/3</code> el navegador mostrarà:</p>
+<p>Quan accedim a <code>/contactes/3</code> el navegador mostrarà:</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Has<span class="w"> </span>consultat<span class="w"> </span>el<span class="w"> </span>contacte<span class="w"> </span>amb<span class="w"> </span>codi<span class="w"> </span><span class="m">3</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="31-configurar-rutes-a-windows">3.1. Configurar rutes a Windows</h3>
@@ -1230,7 +1275,7 @@
 <span class="normal"><a href="#__codelineno-9-8">8</a></span>
 <span class="normal"><a href="#__codelineno-9-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">])]</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">])]</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="p">{</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Has consultat el contacte amb codi </span><span class="si">$codi</span><span class="s2">&quot;</span><span class="p">);</span>
