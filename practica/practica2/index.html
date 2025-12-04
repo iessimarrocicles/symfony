@@ -861,9 +861,9 @@
 <h3 id="controlador-inicicontroller">Controlador <strong>IniciController</strong></h3>
 <ol>
 <li>Crea una classe anomenada <code>IniciController</code>.</li>
-<li>Afig un <strong>mètode</strong> anomenat <code>inici</code>, associat a la <strong>ruta arrel</strong> <code>/</code>.</li>
+<li>Afig una <strong>funció</strong> anomenada <code>inici</code>, associada a la <strong>ruta arrel</strong> <code>/</code>.</li>
 <li>Dona-li el <strong>nom de ruta</strong> <code>inici</code>.</li>
-<li>Utilitza el mètodo <code>GET</code>.</li>
+<li>Utilitza el <strong>mètode</strong> <code>GET</code>.</li>
 <li>Mostra com a <strong>resposta</strong> el missatge següent:</li>
 </ol>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Projecte<span class="w"> </span>Gestió<span class="w"> </span>Tenda<span class="w"> </span>de<span class="w"> </span><span class="o">[</span>nom<span class="w"> </span>i<span class="w"> </span>cognoms<span class="w"> </span>de<span class="w"> </span>l<span class="err">&#39;</span>alumne<span class="o">]</span>
@@ -873,9 +873,10 @@
 <ol>
 <li>Crea una classe anomenada <code>SeccioController</code>.</li>
 <li>Definir una ruta base i nom base a nivell de controlador.</li>
-<li>Afig un <strong>mètode</strong> anomenat <code>voreSeccio</code>, associat a la <strong>ruta</strong> <code>/{codi}</code>.</li>
+<li>Afig una <strong>funció</strong> anomenada <code>voreSeccio</code>, associada a la <strong>ruta</strong> <code>/{codi}</code>.</li>
 <li>Dona-li el <strong>nom de ruta</strong> <code>seccions_dades</code>.</li>
 <li>El paràmetre <code>{codi}</code> serà un <strong>número identificatiu</strong> d’una secció.</li>
+<li>Utilitza el <strong>mètode</strong> <code>GET</code>.</li>
 </ol>
 <p>A la mateixa classe, declara un <strong>array</strong> amb quatre seccions, cadascuna amb els següents camps:</p>
 <ul>
@@ -903,7 +904,7 @@
 <p>El controlador ha de <strong>buscar la secció</strong> que coincidisca amb el codi rebut per paràmetre:</p>
 <ul>
 <li>Si la troba, mostrarà totes les seues dades en el format que preferisques (text pla o HTML).</li>
-<li>Si <strong>no</strong> la troba, mostrarà el missatge:</li>
+<li>Si no la troba, mostrarà el missatge:</li>
 </ul>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>No<span class="w"> </span>s’ha<span class="w"> </span>trobat<span class="w"> </span>la<span class="w"> </span>secció:<span class="w"> </span>CodiSeccio
 </span></code></pre></div></td></tr></table></div>
