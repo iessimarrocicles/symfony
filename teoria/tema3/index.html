@@ -809,6 +809,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1.6. Enllaçar a altres rutes de l’aplicació">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-ruta-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.1. Ruta interna
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-ruta-interna-sense-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.2. Ruta interna sense paràmetres
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-ruta-absoluta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.3. Ruta absoluta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1216,6 +1255,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1.6. Enllaçar a altres rutes de l’aplicació">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-ruta-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.1. Ruta interna
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-ruta-interna-sense-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.2. Ruta interna sense paràmetres
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-ruta-absoluta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6.3. Ruta absoluta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1518,7 +1596,7 @@
 <span class="normal"><a href="#__codelineno-2-16">16</a></span>
 <span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">)]</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa&#39;</span><span class="p">)]</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nx">Response</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">{</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="nv">$contacte</span> <span class="o">=</span> <span class="p">[</span>
@@ -1694,7 +1772,7 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span>└──<span class="w"> </span>_footer.html.twig
 </span></code></pre></div></td></tr></table></div>
 <ul>
-<li>Desa les plantilles parcials dins d’una carpeta <code>partials/</code>.</li>
+<li>Guarda les plantilles parcials dins d’una carpeta <code>partials/</code>.</li>
 <li>Utilitza un guió baix (<code>_</code>) al principi del nom per indicar que són plantilles auxiliars: <code>_menu.html.twig</code>, <code>_footer.html.twig</code>.</li>
 </ul>
 <hr />
@@ -1821,22 +1899,47 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 </span></code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="16-enllacar-a-altres-rutes-de-laplicacio">1.6. Enllaçar a altres rutes de l’aplicació</h2>
+<h3 id="161-ruta-interna">1.6.1. Ruta interna</h3>
 <p>Si el que volem és definir un enllaç a una altra ruta o pàgina de la nostra aplicació, utilitzem la funció <code>path()</code> per indicar el <strong>nom</strong> (<code>name</code>) assignat a la ruta a la qual volem anar.</p>
 <p>Per exemple, si volem anar a la fitxa d’un contacte el codi del qual està emmagatzemat en la variable <code>codi</code>, escriurem:</p>
-<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;fitxa_contacte&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Veure fitxa&lt;/a&gt;</span>
+<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Veure fitxa&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Aquesta instrucció genera automàticament l’enllaç segons les rutes definides al controlador.</p>
 <p>Si la ruta està declarada així:</p>
-<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">#[Route(&#39;/contacte/{codi}&#39;, name: &#39;fitxa_contacte&#39;)]</span>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">#[Route(&#39;/contactes&#39;, name: &#39;contacte_&#39;)]</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="x">class ContacteController{</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="x">  ...</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="x">  #[Route(&#39;/{codi}&#39;, name: &#39;fitxa&#39;)]</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="x">  public function fitxa(int $codi): Response</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="x">  {</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="x">    ...</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="x">  }</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="x">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>i la variable <code>codi</code> val <code>12</code>, el resultat final serà:</p>
-<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/contacte/12&quot;</span><span class="p">&gt;</span>Veure fitxa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/contactes/12&quot;</span><span class="p">&gt;</span>Veure fitxa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div></td></tr></table></div>
+<h3 id="162-ruta-interna-sense-parametres">1.6.2. Ruta interna sense paràmetres</h3>
 <p>Quan la ruta no té paràmetres, simplement podem fer:</p>
 <div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;inici&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;Tornar a l’inici&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Si necessitem generar una <strong>URL absoluta</strong> (per a correus o enllaços externs), emprarem <code>url()</code>:</p>
-<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;fitxa_contacte&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Fitxa completa&lt;/a&gt;</span>
+<h3 id="163-ruta-absoluta">1.6.3. Ruta absoluta</h3>
+<p>Si necessitem generar una URL absoluta (per a correus o enllaços externs), emprarem <code>url()</code>:</p>
+<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Fitxa completa&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <table>
 <thead>
@@ -1850,14 +1953,14 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 <tbody>
 <tr>
 <td><code>path('nom_ruta')</code></td>
-<td>URL <strong>relativa</strong></td>
-<td><code>/contacte/12</code></td>
+<td>URL relativa</td>
+<td><code>/contactes/12</code></td>
 <td>Enllaços dins la web</td>
 </tr>
 <tr>
 <td><code>url('nom_ruta')</code></td>
-<td>URL <strong>absoluta</strong></td>
-<td><code>https://exemple.com/contacte/12</code></td>
+<td>URL absoluta</td>
+<td><code>https://exemple.com/contactes/12</code></td>
 <td>Enllaços externs o correus</td>
 </tr>
 </tbody>
@@ -1905,7 +2008,7 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="c1"># Genera còpies versionades per a producció</span>
 </span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>php<span class="w"> </span>bin/console<span class="w"> </span>asset-map:compile
 </span></code></pre></div></td></tr></table></div>
-<p>A continuació veurem com incloure aquests <strong>recursos estàtics</strong> a les nostres plantilles.</p>
+<p>A continuació veurem com incloure aquests recursos estàtics a les nostres plantilles.</p>
 <hr />
 <h3 id="171-fulls-destil-css">1.7.1. Fulls d’estil (CSS)</h3>
 <p>Crea dins de la carpeta <code>assets/</code> una subcarpeta <code>styles/</code> i afegeix-hi un fitxer anomenat <code>estils.css</code>:</p>
@@ -2246,66 +2349,72 @@ Només utilitzarem la compilació manual <strong>si el mode automàtic no està 
 <span class="normal"><a href="#__codelineno-33-57">57</a></span>
 <span class="normal"><a href="#__codelineno-33-58">58</a></span>
 <span class="normal"><a href="#__codelineno-33-59">59</a></span>
-<span class="normal"><a href="#__codelineno-33-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-33-60">60</a></span>
+<span class="normal"><a href="#__codelineno-33-61">61</a></span>
+<span class="normal"><a href="#__codelineno-33-62">62</a></span>
+<span class="normal"><a href="#__codelineno-33-63">63</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
 </span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a>
 </span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\AbstractController</span><span class="p">;</span>
 </span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
 </span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="k">use</span> <span class="nx">Symfony\Component\Routing\Attribute\Route</span><span class="p">;</span>
 </span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7"></a>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="p">{</span>
-</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10"></a>    <span class="k">private</span> <span class="k">array</span> <span class="nv">$contactes</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Salvador Sala&quot;</span><span class="p">,</span>
-</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;638961244&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salvasala@simarro.org&quot;</span><span class="p">],</span>
-</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Anna Llopis&quot;</span><span class="p">,</span>
-</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;669332004&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;annallopis@simarro.org&quot;</span><span class="p">],</span>
-</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Marc Sanchis&quot;</span><span class="p">,</span>
-</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;962286040&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;marcsanchis@simarro.org&quot;</span><span class="p">],</span>
-</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Laura Palop&quot;</span><span class="p">,</span>
-</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;663568890&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;laurapalop@simarro.org&quot;</span><span class="p">],</span>
-</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19"></a>    <span class="p">];</span>
-</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20"></a>
-</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21"></a>    <span class="c1">// Métode 1</span>
-</span><span id="__span-33-22"><a id="__codelineno-33-22" name="__codelineno-33-22"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;fitxa_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\\d+&#39;</span><span class="p">])]</span>
-</span><span id="__span-33-23"><a id="__codelineno-33-23" name="__codelineno-33-23"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
-</span><span id="__span-33-24"><a id="__codelineno-33-24" name="__codelineno-33-24"></a>    <span class="p">{</span>
-</span><span id="__span-33-25"><a id="__codelineno-33-25" name="__codelineno-33-25"></a>        <span class="c1">// 1) Buscar el contacte pel codi</span>
-</span><span id="__span-33-26"><a id="__codelineno-33-26" name="__codelineno-33-26"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$c</span><span class="p">[</span><span class="s1">&#39;codi&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$codi</span><span class="p">);</span>
-</span><span id="__span-33-27"><a id="__codelineno-33-27" name="__codelineno-33-27"></a>
-</span><span id="__span-33-28"><a id="__codelineno-33-28" name="__codelineno-33-28"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$resultat</span><span class="p">)</span> <span class="p">{</span>
-</span><span id="__span-33-29"><a id="__codelineno-33-29" name="__codelineno-33-29"></a>            <span class="c1">// En un cas real, podríem llançar una 404 o mostrar una vista d’error</span>
-</span><span id="__span-33-30"><a id="__codelineno-33-30" name="__codelineno-33-30"></a>            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
-</span><span id="__span-33-31"><a id="__codelineno-33-31" name="__codelineno-33-31"></a>                <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>
-</span><span id="__span-33-32"><a id="__codelineno-33-32" name="__codelineno-33-32"></a>                <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span><span class="p">,</span>
-</span><span id="__span-33-33"><a id="__codelineno-33-33" name="__codelineno-33-33"></a>            <span class="p">]);</span>
-</span><span id="__span-33-34"><a id="__codelineno-33-34" name="__codelineno-33-34"></a>        <span class="p">}</span>
-</span><span id="__span-33-35"><a id="__codelineno-33-35" name="__codelineno-33-35"></a>
-</span><span id="__span-33-36"><a id="__codelineno-33-36" name="__codelineno-33-36"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
-</span><span id="__span-33-37"><a id="__codelineno-33-37" name="__codelineno-33-37"></a>
-</span><span id="__span-33-38"><a id="__codelineno-33-38" name="__codelineno-33-38"></a>        <span class="c1">// 2) Passar dades a la plantilla Twig</span>
-</span><span id="__span-33-39"><a id="__codelineno-33-39" name="__codelineno-33-39"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
-</span><span id="__span-33-40"><a id="__codelineno-33-40" name="__codelineno-33-40"></a>            <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="nv">$contacte</span><span class="p">,</span>
-</span><span id="__span-33-41"><a id="__codelineno-33-41" name="__codelineno-33-41"></a>            <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span><span class="p">,</span>
-</span><span id="__span-33-42"><a id="__codelineno-33-42" name="__codelineno-33-42"></a>        <span class="p">]);</span>
-</span><span id="__span-33-43"><a id="__codelineno-33-43" name="__codelineno-33-43"></a>    <span class="p">}</span>
-</span><span id="__span-33-44"><a id="__codelineno-33-44" name="__codelineno-33-44"></a>
-</span><span id="__span-33-45"><a id="__codelineno-33-45" name="__codelineno-33-45"></a>    <span class="c1">// Métode 2</span>
-</span><span id="__span-33-46"><a id="__codelineno-33-46" name="__codelineno-33-46"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contacte/{text}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;buscar_contacte&#39;</span><span class="p">,</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;[a-zA-Z]+&#39;</span><span class="p">])]</span>
-</span><span id="__span-33-47"><a id="__codelineno-33-47" name="__codelineno-33-47"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">buscar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
-</span><span id="__span-33-48"><a id="__codelineno-33-48" name="__codelineno-33-48"></a>    <span class="p">{</span>
-</span><span id="__span-33-49"><a id="__codelineno-33-49" name="__codelineno-33-49"></a>        <span class="c1">// 1) Filtrar per nom (coincidència parcial, sense tindre en compte maj./min.)</span>
-</span><span id="__span-33-50"><a id="__codelineno-33-50" name="__codelineno-33-50"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="nd">use</span> <span class="p">(</span><span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
-</span><span id="__span-33-51"><a id="__codelineno-33-51" name="__codelineno-33-51"></a>            <span class="nd">return</span> <span class="nd">stripos</span><span class="p">(</span><span class="nv">$c</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">],</span> <span class="nv">$text</span><span class="p">)</span> <span class="o">!==</span> <span class="nd">false</span><span class="p">;</span>
-</span><span id="__span-33-52"><a id="__codelineno-33-52" name="__codelineno-33-52"></a>        <span class="p">});</span>
-</span><span id="__span-33-53"><a id="__codelineno-33-53" name="__codelineno-33-53"></a>
-</span><span id="__span-33-54"><a id="__codelineno-33-54" name="__codelineno-33-54"></a>        <span class="c1">// 2) Passar la llista (pot ser buida) a la vista</span>
-</span><span id="__span-33-55"><a id="__codelineno-33-55" name="__codelineno-33-55"></a>        <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/cerca.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
-</span><span id="__span-33-56"><a id="__codelineno-33-56" name="__codelineno-33-56"></a>            <span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="nv">$text</span><span class="p">,</span>
-</span><span id="__span-33-57"><a id="__codelineno-33-57" name="__codelineno-33-57"></a>            <span class="s1">&#39;resultats&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resultat</span><span class="p">,</span>
-</span><span id="__span-33-58"><a id="__codelineno-33-58" name="__codelineno-33-58"></a>        <span class="p">]);</span>
-</span><span id="__span-33-59"><a id="__codelineno-33-59" name="__codelineno-33-59"></a>    <span class="p">}</span>
-</span><span id="__span-33-60"><a id="__codelineno-33-60" name="__codelineno-33-60"></a><span class="p">}</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="c1">// Definir una ruta base i nom (prefix) a nivell de controlador</span>
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contactes&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;contacte_&#39;</span><span class="p">)]</span>
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11"></a><span class="p">{</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12"></a>    <span class="c1">// Llista de contactes de mostra</span>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13"></a>    <span class="k">private</span> <span class="k">array</span> <span class="nv">$contactes</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Salvador Sala&quot;</span><span class="p">,</span>
+</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;638961244&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;salvasala@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Anna Llopis&quot;</span><span class="p">,</span>
+</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;669332004&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;annallopis@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Marc Sanchis&quot;</span><span class="p">,</span>
+</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;962286040&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;marcsanchis@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20"></a>        <span class="p">[</span><span class="s2">&quot;codi&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;nom&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Laura Palop&quot;</span><span class="p">,</span>
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21"></a>         <span class="s2">&quot;telefon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;663568890&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;laurapalop@simarro.org&quot;</span><span class="p">],</span>
+</span><span id="__span-33-22"><a id="__codelineno-33-22" name="__codelineno-33-22"></a>    <span class="p">];</span>
+</span><span id="__span-33-23"><a id="__codelineno-33-23" name="__codelineno-33-23"></a>
+</span><span id="__span-33-24"><a id="__codelineno-33-24" name="__codelineno-33-24"></a>    <span class="c1">// Métode 1</span>
+</span><span id="__span-33-25"><a id="__codelineno-33-25" name="__codelineno-33-25"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{codi}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s1">&#39;fitxa&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\d+&#39;</span><span class="p">])]</span>
+</span><span id="__span-33-26"><a id="__codelineno-33-26" name="__codelineno-33-26"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">fitxa</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$codi</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-33-27"><a id="__codelineno-33-27" name="__codelineno-33-27"></a>    <span class="p">{</span>
+</span><span id="__span-33-28"><a id="__codelineno-33-28" name="__codelineno-33-28"></a>        <span class="c1">// 1) Buscar el contacte pel codi</span>
+</span><span id="__span-33-29"><a id="__codelineno-33-29" name="__codelineno-33-29"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$c</span><span class="p">[</span><span class="s1">&#39;codi&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="nv">$codi</span><span class="p">);</span>
+</span><span id="__span-33-30"><a id="__codelineno-33-30" name="__codelineno-33-30"></a>
+</span><span id="__span-33-31"><a id="__codelineno-33-31" name="__codelineno-33-31"></a>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$resultat</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-33-32"><a id="__codelineno-33-32" name="__codelineno-33-32"></a>            <span class="c1">// En un cas real, podríem llançar una 404 o mostrar una vista d’error</span>
+</span><span id="__span-33-33"><a id="__codelineno-33-33" name="__codelineno-33-33"></a>            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-33-34"><a id="__codelineno-33-34" name="__codelineno-33-34"></a>                <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>
+</span><span id="__span-33-35"><a id="__codelineno-33-35" name="__codelineno-33-35"></a>                <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span><span class="p">,</span>
+</span><span id="__span-33-36"><a id="__codelineno-33-36" name="__codelineno-33-36"></a>            <span class="p">]);</span>
+</span><span id="__span-33-37"><a id="__codelineno-33-37" name="__codelineno-33-37"></a>        <span class="p">}</span>
+</span><span id="__span-33-38"><a id="__codelineno-33-38" name="__codelineno-33-38"></a>
+</span><span id="__span-33-39"><a id="__codelineno-33-39" name="__codelineno-33-39"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
+</span><span id="__span-33-40"><a id="__codelineno-33-40" name="__codelineno-33-40"></a>
+</span><span id="__span-33-41"><a id="__codelineno-33-41" name="__codelineno-33-41"></a>        <span class="c1">// 2) Passar dades a la plantilla Twig</span>
+</span><span id="__span-33-42"><a id="__codelineno-33-42" name="__codelineno-33-42"></a>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/fitxa.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-33-43"><a id="__codelineno-33-43" name="__codelineno-33-43"></a>            <span class="s1">&#39;contacte&#39;</span> <span class="o">=&gt;</span> <span class="nv">$contacte</span><span class="p">,</span>
+</span><span id="__span-33-44"><a id="__codelineno-33-44" name="__codelineno-33-44"></a>            <span class="s1">&#39;codi&#39;</span> <span class="o">=&gt;</span> <span class="nv">$codi</span><span class="p">,</span>
+</span><span id="__span-33-45"><a id="__codelineno-33-45" name="__codelineno-33-45"></a>        <span class="p">]);</span>
+</span><span id="__span-33-46"><a id="__codelineno-33-46" name="__codelineno-33-46"></a>    <span class="p">}</span>
+</span><span id="__span-33-47"><a id="__codelineno-33-47" name="__codelineno-33-47"></a>
+</span><span id="__span-33-48"><a id="__codelineno-33-48" name="__codelineno-33-48"></a>    <span class="c1">// Métode 2</span>
+</span><span id="__span-33-49"><a id="__codelineno-33-49" name="__codelineno-33-49"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/{text}&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;buscar&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span> <span class="nx">requirements</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;[a-zA-Z]+&#39;</span><span class="p">])]</span>
+</span><span id="__span-33-50"><a id="__codelineno-33-50" name="__codelineno-33-50"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">buscar</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$text</span><span class="p">)</span><span class="o">:</span> <span class="nd">Response</span>
+</span><span id="__span-33-51"><a id="__codelineno-33-51" name="__codelineno-33-51"></a>    <span class="p">{</span>
+</span><span id="__span-33-52"><a id="__codelineno-33-52" name="__codelineno-33-52"></a>        <span class="c1">// 1) Filtrar per nom (coincidència parcial, sense tindre en compte maj./min.)</span>
+</span><span id="__span-33-53"><a id="__codelineno-33-53" name="__codelineno-33-53"></a>        <span class="nv">$resultat</span> <span class="o">=</span> <span class="nd">array_filter</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="nd">use</span> <span class="p">(</span><span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-33-54"><a id="__codelineno-33-54" name="__codelineno-33-54"></a>            <span class="nd">return</span> <span class="nd">stripos</span><span class="p">(</span><span class="nv">$c</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">],</span> <span class="nv">$text</span><span class="p">)</span> <span class="o">!==</span> <span class="nd">false</span><span class="p">;</span>
+</span><span id="__span-33-55"><a id="__codelineno-33-55" name="__codelineno-33-55"></a>        <span class="p">});</span>
+</span><span id="__span-33-56"><a id="__codelineno-33-56" name="__codelineno-33-56"></a>
+</span><span id="__span-33-57"><a id="__codelineno-33-57" name="__codelineno-33-57"></a>        <span class="c1">// 2) Passar la llista (pot ser buida) a la vista</span>
+</span><span id="__span-33-58"><a id="__codelineno-33-58" name="__codelineno-33-58"></a>        <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;contacte/cerca.html.twig&#39;</span><span class="p">,</span> <span class="p">[</span>
+</span><span id="__span-33-59"><a id="__codelineno-33-59" name="__codelineno-33-59"></a>            <span class="s1">&#39;text&#39;</span> <span class="o">=&gt;</span> <span class="nv">$text</span><span class="p">,</span>
+</span><span id="__span-33-60"><a id="__codelineno-33-60" name="__codelineno-33-60"></a>            <span class="s1">&#39;resultats&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resultat</span><span class="p">,</span>
+</span><span id="__span-33-61"><a id="__codelineno-33-61" name="__codelineno-33-61"></a>        <span class="p">]);</span>
+</span><span id="__span-33-62"><a id="__codelineno-33-62" name="__codelineno-33-62"></a>    <span class="p">}</span>
+</span><span id="__span-33-63"><a id="__codelineno-33-63" name="__codelineno-33-63"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>Què hem canviat respecte a Tema 2?</strong><br />
 Ara no construïm HTML al controlador: sols preparem dades i les enviem a Twig per a pintar la resposta (exactament el que recomanàvem a la secció <em>“Separació MVC real”</em> del tema 2).</p>
@@ -2447,9 +2556,9 @@ Ara no construïm HTML al controlador: sols preparem dades i les enviem a Twig p
 <hr />
 <h3 id="36-proves-rapides">3.6. Proves ràpides</h3>
 <p><strong>Fitxa (numèric):</strong><br />
-👉 <code>http://localhost/contacte/3</code> → mostra la fitxa amb codi 3.</p>
+👉 <code>http://localhost/contactes/3</code> → mostra la fitxa amb codi 3.</p>
 <p><strong>Cerca (text):</strong><br />
-👉 <code>http://localhost/contacte/sa</code> → llista coincidències per "sa".</p>
+👉 <code>http://localhost/contactes/sa</code> → llista coincidències per "sa".</p>
 <blockquote>
 <p>Ambdós camins comparteixen prefix i es diferencien pel <em>requirement</em> de la ruta (igual que l’exemple original del Tema 2).</p>
 </blockquote>
