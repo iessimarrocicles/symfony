@@ -1926,16 +1926,16 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 <hr />
 <h2 id="16-enllacar-a-altres-rutes-de-laplicacio">1.6. Enllaçar a altres rutes de l’aplicació</h2>
 <h3 id="161-ruta-interna-sense-parametres">1.6.1. Ruta interna sense paràmetres</h3>
+<p>Si el que volem és definir un enllaç a una altra ruta o pàgina de la nostra aplicació, utilitzem la funció <code>path()</code> per indicar el <strong>nom</strong> (<code>name</code>) assignat a la ruta a la qual volem anar.</p>
 <p>Quan la ruta no té paràmetres, simplement podem fer:</p>
 <div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;inici&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;Tornar a l’inici&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
+<p>Aquesta instrucció genera automàticament l’enllaç segons les rutes definides al controlador.</p>
 <hr />
 <h3 id="162-ruta-interna-amb-parametres">1.6.2. Ruta interna amb paràmetres</h3>
-<p>Si el que volem és definir un enllaç a una altra ruta o pàgina de la nostra aplicació, utilitzem la funció <code>path()</code> per indicar el <strong>nom</strong> (<code>name</code>) assignat a la ruta a la qual volem anar.</p>
-<p>Per exemple, si volem anar a la fitxa d’un contacte el codi del qual està emmagatzemat en la variable <code>codi</code>, escriurem:</p>
+<p>Si volem anar a la fitxa d’un contacte el codi del qual està emmagatzemat en la variable <code>codi</code>, escriurem:</p>
 <div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Veure fitxa&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Aquesta instrucció genera automàticament l’enllaç segons les rutes definides al controlador.</p>
 <p>Si la ruta està declarada així:</p>
 <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
