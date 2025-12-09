@@ -940,7 +940,7 @@
 </ul>
 </li>
 <li>Importa en aquesta plantilla tots els recursos CSS i JS que necessite la plantilla Bootstrap triada (o creada per tu).</li>
-<li>Crea una carpeta <code>templates/_fragments</code> i extrau com a mínim:<ol>
+<li>Crea una carpeta <code>templates/_partials</code> i extrau com a mínim:<ol>
 <li><code>_menu.html.twig</code> -&gt; menú de navegació.</li>
 <li><code>_peu.html.twig</code> -&gt; peu de pàgina.</li>
 </ol>
@@ -971,13 +971,13 @@
 <li>Classe <code>src/Controller/SeccioController.php</code>:<ul>
 <li><strong>llistat():</strong><ul>
 <li>Ruta <code>/seccions</code>.</li>
-<li>Nom <code>llistat_seccions</code>.</li>
+<li>Nom <code>seccio_llistat</code>.</li>
 <li>Renderitza <code>seccio/llistat.html.twig</code>.</li>
 </ul>
 </li>
 <li><strong>detall(int $codi):</strong><ul>
 <li>Ruta <code>/seccions/{codi}</code>.</li>
-<li>Nom <code>dades_seccio</code>.</li>
+<li>Nom <code>seccio_detall</code>.</li>
 <li>Renderitza <code>seccio/detall.html.twig</code>.</li>
 </ul>
 </li>
@@ -987,7 +987,7 @@
 </li>
 </ol>
 <blockquote>
-<p>Les rutes mínimes del nostre projecte: <code>inici</code>, <code>llistat_seccions</code> i <code>dades_seccio</code>.</p>
+<p>Les rutes mínimes del nostre projecte: <code>inici</code>, <code>seccio_llistat</code> i <code>seccio_detall</code>.</p>
 <p>Podem comprovar el funcionament amb <code>php bin/console debug:router</code> i el profiler.</p>
 </blockquote>
 <hr />
