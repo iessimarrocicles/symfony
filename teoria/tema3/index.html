@@ -813,10 +813,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#161-ruta-interna" class="md-nav__link">
+  <a href="#161-ruta-interna-sense-parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6.1. Ruta interna
+        1.6.1. Ruta interna sense paràmetres
       
     </span>
   </a>
@@ -824,10 +824,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#162-ruta-interna-sense-parametres" class="md-nav__link">
+  <a href="#162-ruta-interna-amb-parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6.2. Ruta interna sense paràmetres
+        1.6.2. Ruta interna amb paràmetres
       
     </span>
   </a>
@@ -1270,10 +1270,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#161-ruta-interna" class="md-nav__link">
+  <a href="#161-ruta-interna-sense-parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6.1. Ruta interna
+        1.6.1. Ruta interna sense paràmetres
       
     </span>
   </a>
@@ -1281,10 +1281,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#162-ruta-interna-sense-parametres" class="md-nav__link">
+  <a href="#162-ruta-interna-amb-parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6.2. Ruta interna sense paràmetres
+        1.6.2. Ruta interna amb paràmetres
       
     </span>
   </a>
@@ -1925,48 +1925,51 @@ S’utilitza habitualment per canviar colors, classes CSS o estils en llistats.<
 </span></code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="16-enllacar-a-altres-rutes-de-laplicacio">1.6. Enllaçar a altres rutes de l’aplicació</h2>
-<h3 id="161-ruta-interna">1.6.1. Ruta interna</h3>
+<h3 id="161-ruta-interna-sense-parametres">1.6.1. Ruta interna sense paràmetres</h3>
+<p>Quan la ruta no té paràmetres, simplement podem fer:</p>
+<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;inici&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;Tornar a l’inici&lt;/a&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h3 id="162-ruta-interna-amb-parametres">1.6.2. Ruta interna amb paràmetres</h3>
 <p>Si el que volem és definir un enllaç a una altra ruta o pàgina de la nostra aplicació, utilitzem la funció <code>path()</code> per indicar el <strong>nom</strong> (<code>name</code>) assignat a la ruta a la qual volem anar.</p>
 <p>Per exemple, si volem anar a la fitxa d’un contacte el codi del qual està emmagatzemat en la variable <code>codi</code>, escriurem:</p>
-<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Veure fitxa&lt;/a&gt;</span>
+<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Veure fitxa&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Aquesta instrucció genera automàticament l’enllaç segons les rutes definides al controlador.</p>
 <p>Si la ruta està declarada així:</p>
-<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-18-10">10</a></span>
-<span class="normal"><a href="#__codelineno-18-11">11</a></span>
-<span class="normal"><a href="#__codelineno-18-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="x">#[Route(&#39;/contactes&#39;, name: &#39;contacte_&#39;)]</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="x">class ContacteController{</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="x">  ...</span>
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="x">  #[Route(&#39;/{codi}&#39;, name: &#39;fitxa&#39;)]</span>
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="x">  public function fitxa(int $codi): Response</span>
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="x">  {</span>
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="x">    ...</span>
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="x">  }</span>
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a>
-</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="x">}</span>
+<div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="x">#[Route(&#39;/contactes&#39;, name: &#39;contacte_&#39;)]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="x">class ContacteController{</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="x">  ...</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="x">  #[Route(&#39;/{codi}&#39;, name: &#39;fitxa&#39;)]</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="x">  public function fitxa(int $codi): Response</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="x">  {</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a><span class="x">    ...</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="x">  }</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="x">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>i la variable <code>codi</code> val <code>12</code>, el resultat final serà:</p>
-<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/contactes/12&quot;</span><span class="p">&gt;</span>Veure fitxa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<div class="language-html highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/contactes/12&quot;</span><span class="p">&gt;</span>Veure fitxa<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<h3 id="162-ruta-interna-sense-parametres">1.6.2. Ruta interna sense paràmetres</h3>
-<p>Quan la ruta no té paràmetres, simplement podem fer:</p>
-<div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">path</span><span class="o">(</span><span class="s1">&#39;inici&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;Tornar a l’inici&lt;/a&gt;</span>
-</span></code></pre></div></td></tr></table></div>
+<hr />
 <h3 id="163-ruta-absoluta">1.6.3. Ruta absoluta</h3>
 <p>Si necessitem generar una URL absoluta (per a correus o enllaços externs), emprarem <code>url()</code>:</p>
 <div class="language-twig highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="x">&lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s1">&#39;contacte_fitxa&#39;</span><span class="o">,</span> <span class="o">{</span><span class="s1">&#39;codi&#39;</span><span class="o">:</span> <span class="nv">codi</span><span class="o">})</span> <span class="cp">}}</span><span class="x">&quot;&gt;Fitxa completa&lt;/a&gt;</span>
 </span></code></pre></div></td></tr></table></div>
+<hr />
 <h3 id="164-resum">1.6.4. Resum</h3>
 <table>
 <thead>
