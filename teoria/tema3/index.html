@@ -2300,23 +2300,33 @@ Només utilitzarem la compilació manual <strong>si el mode automàtic no està 
 <hr />
 <h2 id="3-exemple-complet">3. Exemple complet</h2>
 <h3 id="31-estructura-de-fitxers">3.1. Estructura de fitxers</h3>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
-<span class="normal"><a href="#__codelineno-32-2">2</a></span>
-<span class="normal"><a href="#__codelineno-32-3">3</a></span>
-<span class="normal"><a href="#__codelineno-32-4">4</a></span>
-<span class="normal"><a href="#__codelineno-32-5">5</a></span>
-<span class="normal"><a href="#__codelineno-32-6">6</a></span>
-<span class="normal"><a href="#__codelineno-32-7">7</a></span>
-<span class="normal"><a href="#__codelineno-32-8">8</a></span>
-<span class="normal"><a href="#__codelineno-32-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>src/
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-32-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-32-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-32-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-32-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-32-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-32-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-32-10">10</a></span>
+<span class="normal"><a href="#__codelineno-32-11">11</a></span>
+<span class="normal"><a href="#__codelineno-32-12">12</a></span>
+<span class="normal"><a href="#__codelineno-32-13">13</a></span>
+<span class="normal"><a href="#__codelineno-32-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>src/
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a>└──<span class="w"> </span>Controller/
 </span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="w">    </span>└──<span class="w"> </span>ContacteController.php
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a>
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a>templates/
-</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a>├──<span class="w"> </span>base.html.twig
-</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a>└──<span class="w"> </span>contacte/
-</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a><span class="w">    </span>├──<span class="w"> </span>fitxa.html.twig
-</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a><span class="w">    </span>└──<span class="w"> </span>cerca.html.twig
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="w">    </span>└──<span class="w"> </span>IniciController.php
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a>
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6"></a>templates/
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7"></a>├──<span class="w"> </span>base.html.twig
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8"></a>├──<span class="w"> </span>inici.html.twig
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9"></a>├──<span class="w"> </span>contacte/
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10"></a>│<span class="w">   </span>├──<span class="w"> </span>fitxa.html.twig
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11"></a>│<span class="w">   </span>└──<span class="w"> </span>cerca.html.twig
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12"></a>└──<span class="w"> </span>partials/
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13"></a><span class="w">    </span>├──<span class="w"> </span>_footer.html.twig
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14"></a><span class="w">    </span>└──<span class="w"> </span>_menu.html.twig
 </span></code></pre></div></td></tr></table></div>
 <hr />
 <h3 id="32-controlador">3.2. Controlador</h3>
@@ -2584,6 +2594,14 @@ Ara no construïm HTML al controlador: sols preparem dades i les enviem a Twig p
 </span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19"></a><span class="x">  </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </span><span id="__span-36-20"><a id="__codelineno-36-20" name="__codelineno-36-20"></a><span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 </span></code></pre></div></td></tr></table></div>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">Laboratori</p>
+<ul>
+<li>Recorda realitzar els dos laboratoris que es demanen en aquesta unitat: un corresponent al menú de l’aplicació i un altre al peu de pàgina.</li>
+<li>A més, cal copiar i aplicar el CSS treballat en els punts anteriors.</li>
+</ul>
+</div>
 <hr />
 <h3 id="36-proves-rapides">3.6. Proves ràpides</h3>
 <p><strong>Fitxa (numèric):</strong><br />
