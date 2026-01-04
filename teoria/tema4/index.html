@@ -1575,18 +1575,18 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>👉 En el constructor, el que fa PHP amb <strong>Property Promotion</strong>:</p>
-<ol>
+<ul>
 <li>Declara l’atribut private MissatgeService $missatgeService.</li>
 <li>Declara el paràmetre del constructor.</li>
 <li>Assigna automàticament $this-&gt;missatgeService = $missatgeService.</li>
-</ol>
+</ul>
 <p>👉 En el constructor, el que fa Symfony amb la <strong>Injecció de dependències</strong>:</p>
-<ol>
+<ul>
 <li>Detecta que el controlador necessita MissatgeService.</li>
 <li>Busca el servei en el contenidor.</li>
 <li>El crea automàticament (autowiring).</li>
 <li>L’injecta com a paràmetre en el constructor.</li>
-</ol>
+</ul>
 <p>💡 Açò s’anomena <strong>Injecció de Dependències (DI)</strong> i és una bona pràctica perquè el controlador no s’encarrega de crear el servei, sinó que el rep preparat per a utilitzar-lo.</p>
 <hr />
 <h3 id="43-exemple-classic">4.3. Exemple clàssic</h3>
@@ -1687,12 +1687,12 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span></code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="6-exemple-de-servei-predefinit">6. Exemple de servei predefinit</h2>
-<p>Symfony inclou molts <strong>serveis predefinits</strong> llestos per a utilitzar, com ara:</p>
+<p>Symfony inclou molts <strong>serveis predefinits</strong> preparats per a utilitzar, com ara:</p>
 <ul>
 <li><code>MailerInterface</code> → enviar correus electrònics  </li>
 <li><code>LoggerInterface</code> → registrar missatges de log (errors, avisos, informació...)</li>
 </ul>
-<p>Per utilitzar un servei, n’hi ha prou amb <strong>injectar-lo al controlador</strong> mitjançant el constructor.</p>
+<p>Per utilitzar un servei, n'hi ha prou amb <strong>injectar-lo al controlador</strong> mitjançant el constructor.</p>
 <hr />
 <h3 id="61-monolog-servei-de-logs">6.1. Monolog - Servei de logs</h3>
 <p><strong>Monolog</strong> és la biblioteca encarregada de gestionar els logs dins d’aplicacions PHP. És a dir, és l’eina que escriu els missatges en els fitxers, els envia a la consola, a correu, a serveis externs, etc.</p>
@@ -1809,9 +1809,9 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 <hr />
 <h2 id="7-exemple-de-servei-propi">7. Exemple de servei propi</h2>
 <p>Podem crear <strong>serveis propis</strong> per encapsular funcionalitats o dades reutilitzables dins de l’aplicació.</p>
-<p>En l’exemple de <em>Contactes</em>, extraurem l’array de contactes del controlador i el posarem en un <strong>servei propi</strong> anomenat <code>BDProva</code>.</p>
-<p>Els serveis es poden crear dins de la carpeta <code>src/Service</code>, que cal crear si no existeix.<br />
-Symfony detecta automàticament totes les classes d’aquesta carpeta com a serveis.</p>
+<p>En el projecte de l'<em>agenda</em>, extraurem l’array de contactes del controlador i el posarem en un <strong>servei propi</strong> anomenat <code>BDProva</code>.</p>
+<p>Els serveis es poden crear dins de la carpeta <code>src/Service</code>, que cal crear si no existeix.</p>
+<p>Symfony detecta automàticament totes les classes d’aquesta carpeta com a serveis.</p>
 <p><strong>Fitxer:</strong> <code>src/Service/BDProva.php</code></p>
 <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
@@ -2083,7 +2083,7 @@ Symfony detecta automàticament totes les classes d’aquesta carpeta com a serv
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">    </span><span class="nt">arguments</span><span class="p">:</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">      </span><span class="nt">$formatData</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;d/m/Y</span><span class="nv"> </span><span class="s">H:i:s&#39;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Amb això, indiquem que el paràmetre <code>$formatData</code> del constructor de <code>IniciController</code> tindrà per defecte el valor <code>'d/m/y H:i:s'</code>.</p>
+<p>Amb això, indiquem que el paràmetre <code>$formatData</code> del constructor de <code>IniciController</code> tindrà per defecte el valor <code>'d/m/Y H:i:s'</code>.</p>
 <p>📝 <strong>Notes:</strong></p>
 <ul>
 <li>No utilitzes el tabulador per indentar (usa espais).  </li>
