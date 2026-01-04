@@ -1575,21 +1575,18 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>👉 En el constructor, el que fa PHP amb <strong>Property Promotion</strong>:</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>1. Declara l’atribut private MissatgeService $missatgeService.
-2. Declara el paràmetre del constructor.
-3. Assigna automàticament $this-&gt;missatgeService = $missatgeService.
-</code></pre></div></td></tr></table></div>
+<ol>
+<li>Declara l’atribut private MissatgeService $missatgeService.</li>
+<li>Declara el paràmetre del constructor.</li>
+<li>Assigna automàticament $this-&gt;missatgeService = $missatgeService.</li>
+</ol>
 <p>👉 En el constructor, el que fa Symfony amb la <strong>Injecció de dependències</strong>:</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>1. Detecta que el controlador necessita MissatgeService.
-2. Busca el servei en el contenidor.
-3. El crea automàticament (autowiring).
-4. L’injecta com a paràmetre en el constructor.
-</code></pre></div></td></tr></table></div>
+<ol>
+<li>Detecta que el controlador necessita MissatgeService.</li>
+<li>Busca el servei en el contenidor.</li>
+<li>El crea automàticament (autowiring).</li>
+<li>L’injecta com a paràmetre en el constructor.</li>
+</ol>
 <p>💡 Açò s’anomena <strong>Injecció de Dependències (DI)</strong> i és una bona pràctica perquè el controlador no s’encarrega de crear el servei, sinó que el rep preparat per a utilitzar-lo.</p>
 <hr />
 <h3 id="43-exemple-classic">4.3. Exemple clàssic</h3>
