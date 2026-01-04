@@ -1575,18 +1575,21 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>👉 En el constructor, el que fa PHP amb <strong>Property Promotion</strong>:</p>
-<ol>
-<li>Declara l’atribut private MissatgeService $missatgeService.</li>
-<li>Declara el paràmetre del constructor.</li>
-<li>Assigna automàticament $this-&gt;missatgeService = $missatgeService.</li>
-</ol>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>1. Declara l’atribut private MissatgeService $missatgeService.
+2. Declara el paràmetre del constructor.
+3. Assigna automàticament $this-&gt;missatgeService = $missatgeService.
+</code></pre></div></td></tr></table></div>
 <p>👉 En el constructor, el que fa Symfony amb la <strong>Injecció de dependències</strong>:</p>
-<ol>
-<li>Detecta que el controlador necessita MissatgeService.</li>
-<li>Busca el servei en el contenidor.</li>
-<li>El crea automàticament (autowiring).</li>
-<li>L’injecta com a paràmetre en el constructor.</li>
-</ol>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>1. Detecta que el controlador necessita MissatgeService.
+2. Busca el servei en el contenidor.
+3. El crea automàticament (autowiring).
+4. L’injecta com a paràmetre en el constructor.
+</code></pre></div></td></tr></table></div>
 <p>💡 Açò s’anomena <strong>Injecció de Dependències (DI)</strong> i és una bona pràctica perquè el controlador no s’encarrega de crear el servei, sinó que el rep preparat per a utilitzar-lo.</p>
 <hr />
 <h3 id="43-exemple-classic">4.3. Exemple clàssic</h3>
@@ -1800,7 +1803,7 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 <p>📝 Notes:</p>
 <ul>
 <li><code>\DateTime</code> → La barra invertida inicial \ vol dir “comença des de l’arrel del namespace”, i DateTime és una classe interna de PHP (forma part del nucli del llenguatge).<ul>
-<li>També podem importar la classe amb <code>use</code> i no utilitzar la <code>\</code> davant.  </li>
+<li>També podem importar la classe amb <code>use DateTime;</code> i no utilitzar la <code>\</code> davant.  </li>
 </ul>
 </li>
 <li>Els missatges es guarden en <code>var/log/dev.log</code> o <code>var/log/prod.log</code> segons l’entorn.</li>
@@ -1937,22 +1940,20 @@ Symfony detecta automàticament totes les classes d’aquesta carpeta com a serv
 <span class="normal"><a href="#__codelineno-14-11">11</a></span>
 <span class="normal"><a href="#__codelineno-14-12">12</a></span>
 <span class="normal"><a href="#__codelineno-14-13">13</a></span>
-<span class="normal"><a href="#__codelineno-14-14">14</a></span>
-<span class="normal"><a href="#__codelineno-14-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="k">class</span> <span class="nc">UnaClasse</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="p">{</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>    <span class="k">private</span> <span class="nv">$contactes</span><span class="p">;</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">BDProva</span> <span class="nv">$dades</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>    <span class="p">{</span>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span> <span class="o">=</span> <span class="nv">$dades</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a>    <span class="p">}</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="p">}</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="cp">?&gt;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">BDProva</span> <span class="nv">$dades</span><span class="p">,</span> <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>    <span class="p">{</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a>    <span class="p">}</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a>    <span class="c1">// Podem utilitzar en qualsevol lloc:</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a>    <span class="c1">// $this-&gt;dades-&gt;get(); o $this-&gt;logger-&gt;info(&#39;...&#39;);</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="p">}</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>2. Crear un servei combinat</strong></p>
 <p>Podem encapsular els serveis dins d’una classe nova, per exemple <code>ServeiCombinat</code>, i injectar només aquesta.</p>
@@ -1979,7 +1980,7 @@ Symfony detecta automàticament totes les classes d’aquesta carpeta com a serv
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>    <span class="k">private</span> <span class="nv">$contactes</span><span class="p">;</span>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">BDProva</span> <span class="nv">$dades</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">BDProva</span> <span class="nv">$dades</span><span class="p">,</span> <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
 </span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>    <span class="p">{</span>
 </span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactes</span> <span class="o">=</span> <span class="nv">$dades</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 </span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
@@ -2002,25 +2003,24 @@ Symfony detecta automàticament totes les classes d’aquesta carpeta com a serv
 <span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-16-10">10</a></span>
 <span class="normal"><a href="#__codelineno-16-11">11</a></span>
-<span class="normal"><a href="#__codelineno-16-12">12</a></span>
-<span class="normal"><a href="#__codelineno-16-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="k">class</span> <span class="nc">UnaClasse</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="p">{</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="k">private</span> <span class="nv">$servei</span><span class="p">;</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ServeiCombinat</span> <span class="nv">$servei</span><span class="p">)</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a>    <span class="p">{</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">servei</span> <span class="o">=</span> <span class="nv">$servei</span><span class="p">;</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a>    <span class="p">}</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="p">}</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="cp">?&gt;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">ServeiCombinat</span> <span class="nv">$servei</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>    <span class="p">{</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a>    <span class="p">}</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>    <span class="c1">// Podem utilitzar en qualsevol lloc: $this-&gt;servei;</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="p">}</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Aquesta segona opció millora la llegibilitat i facilita la reutilització de conjunts de serveis.</p>
 <hr />
 <h3 id="82-arguments-sense-autowiring">8.2. Arguments sense "autowiring"</h3>
-<p>L’opció <code>autowire</code> de <code>config/services.yaml</code> permet que Symfony cree automàticament els serveis necessaris en funció del tipus del paràmetre. No obstant això, <strong>hi ha casos en què Symfony no pot autoinjectar valors</strong> (p. ex. variables sense tipus o literals).</p>
+<p>L’opció <code>autowire</code> de <code>config/services.yaml</code> permet que Symfony cree automàticament els serveis necessaris en funció del tipus del paràmetre.</p>
+<p>No obstant això, <strong>hi ha casos en què Symfony no pot autoinjectar valors</strong> (p. ex. variables sense tipus o literals).</p>
 <p><strong>🧩 Exemple</strong></p>
 <p>Suposem que volem que el format de data siga personalitzable en el <code>IniciController</code>:</p>
 <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
