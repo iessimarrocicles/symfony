@@ -1521,7 +1521,9 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12"></a>
 </span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Gràcies a l’<code>autowire</code>, no cal registrar-la. Symfony la detectarà automàticament.</p>
+<p>Symfony registra automàticament les classes del directori src/ com a serveis gràcies a la configuració del contenidor.</p>
+<p>L'<code>autowire</code> permet injectar-les automàticament segons el tipus, i l'<code>autoconfigure</code> aplica la configuració addicional necessària.</p>
+<hr />
 <h3 id="42-us-del-servei-en-un-controlador">4.2 Ús del servei en un controlador</h3>
 <p><strong>Fitxer:</strong> <code>src/Controller/SalutacioController.php</code></p>
 <div class="language-php highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
@@ -1572,13 +1574,13 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23"></a>
 </span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>👉 En el constructor, el que fa PHP amb <em>Property Promotion</em>:</p>
+<p>👉 En el constructor, el que fa PHP amb <strong>Property Promotion</strong>:</p>
 <ol>
 <li>Declara l’atribut private MissatgeService $missatgeService.</li>
 <li>Declara el paràmetre del constructor.</li>
 <li>Assigna automàticament $this-&gt;missatgeService = $missatgeService.</li>
 </ol>
-<p>👉 En el constructor, el que fa Symfony amb la <em>Injecció de dependències</em>:</p>
+<p>👉 En el constructor, el que fa Symfony amb la <strong>Injecció de dependències</strong>:</p>
 <ol>
 <li>Detecta que el controlador necessita MissatgeService.</li>
 <li>Busca el servei en el contenidor.</li>
