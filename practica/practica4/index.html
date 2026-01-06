@@ -991,12 +991,10 @@
    <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">services</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">services</span><span class="p">:</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">_defaults</span><span class="p">:</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nt">autowire</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nt">autoconfigure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nt">public</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </span></code></pre></div></td></tr></table></div>
    Això habilita que Symfony detecte i injecte automàticament les dependències per tipus (classes/interfícies), i registre serveis segons el seu tipus.</li>
 </ol>
@@ -1009,7 +1007,7 @@
 </ul>
 </li>
 <li>Entra a http://symfony.tendaNomAlumne/ i comprova que s’ha creat o actualitzat el fitxer <code>var/log/dev.log</code>. Hauries de veure una línia semblant a:
-   <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Nou<span class="w"> </span>accés<span class="w"> </span>d’usuari:<span class="w"> </span><span class="o">{</span><span class="s2">&quot;ip&quot;</span>:<span class="s2">&quot;127.0.0.1&quot;</span>,<span class="s2">&quot;moment&quot;</span>:<span class="s2">&quot;2025-11-12 09:30:00&quot;</span>,<span class="s2">&quot;ruta&quot;</span>:<span class="s2">&quot;/&quot;</span><span class="o">}</span>
+   <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Nou<span class="w"> </span>accés<span class="w"> </span>usuari:<span class="w"> </span><span class="o">{</span><span class="s2">&quot;ip&quot;</span>:<span class="s2">&quot;127.0.0.1&quot;</span>,<span class="s2">&quot;moment&quot;</span>:<span class="s2">&quot;2026-01-07 10:30:00&quot;</span>,<span class="s2">&quot;ruta&quot;</span>:<span class="s2">&quot;/&quot;</span><span class="o">}</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>Obri el fitxer de log i verifica que cada vegada que recarregues la pàgina, s’afegeix un nou registre d’accés.</li>
 </ol>
