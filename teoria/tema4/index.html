@@ -2052,7 +2052,8 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 <span class="normal"><a href="#__codelineno-17-24">24</a></span>
 <span class="normal"><a href="#__codelineno-17-25">25</a></span>
 <span class="normal"><a href="#__codelineno-17-26">26</a></span>
-<span class="normal"><a href="#__codelineno-17-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-17-27">27</a></span>
+<span class="normal"><a href="#__codelineno-17-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="k">namespace</span> <span class="nx">App\Controller</span><span class="p">;</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>
@@ -2065,20 +2066,21 @@ Si cal exposar-ne algun directament, podem marcar-lo com <strong>públic</strong
 </span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="k">class</span> <span class="nc">IniciController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
 </span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="p">{</span>
 </span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">,</span> <span class="k">private</span> <span class="nx">string</span> <span class="nv">$formatData</span><span class="p">)</span> <span class="p">{</span>
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a>
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a>    <span class="p">}</span>
-</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a>
-</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;inici&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
-</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">inici</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span>
-</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a>    <span class="p">{</span>
-</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21"></a>        <span class="nv">$dataHora</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
-</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;Accés el &quot;</span> <span class="o">.</span> <span class="nv">$dataHora</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatData</span><span class="p">));</span>
-</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23"></a>        <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;inici.html.twig&#39;</span><span class="p">);</span>
-</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24"></a>    <span class="p">}</span>
-</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25"></a><span class="p">}</span>
-</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26"></a>
-</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27"></a><span class="cp">?&gt;</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">,</span> 
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a>                                <span class="k">private</span> <span class="nx">string</span> <span class="nv">$formatData</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a>
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a>    <span class="p">}</span>
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a>
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;inici&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">inici</span><span class="p">()</span><span class="o">:</span> <span class="nx">Response</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21"></a>    <span class="p">{</span>
+</span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22"></a>        <span class="nv">$dataHora</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+</span><span id="__span-17-23"><a id="__codelineno-17-23" name="__codelineno-17-23"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;Accés el &quot;</span> <span class="o">.</span> <span class="nv">$dataHora</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatData</span><span class="p">));</span>
+</span><span id="__span-17-24"><a id="__codelineno-17-24" name="__codelineno-17-24"></a>        <span class="nd">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;inici.html.twig&#39;</span><span class="p">);</span>
+</span><span id="__span-17-25"><a id="__codelineno-17-25" name="__codelineno-17-25"></a>    <span class="p">}</span>
+</span><span id="__span-17-26"><a id="__codelineno-17-26" name="__codelineno-17-26"></a><span class="p">}</span>
+</span><span id="__span-17-27"><a id="__codelineno-17-27" name="__codelineno-17-27"></a>
+</span><span id="__span-17-28"><a id="__codelineno-17-28" name="__codelineno-17-28"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Si intentem executar aquesta classe amb <code>$formatData</code>, Symfony llançarà un error, ja que <strong>no sap d’on obtindre aquest valor</strong>.</p>
 <p>🔧 <strong>Solució:</strong></p>
