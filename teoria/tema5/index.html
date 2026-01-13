@@ -1561,8 +1561,8 @@
 <h1 id="tema-5-model-de-dades-amb-doctrine">📘 Tema 5 — Model de dades amb Doctrine</h1>
 <h2 id="1-introduccio-a-doctrine">1. Introducció a Doctrine</h2>
 <h3 id="11-que-es-un-orm">1.1 Què és un ORM?</h3>
-<p>Un <strong>ORM</strong> (<em>Object Relational Mapping</em>) és un sistema que permet treballar amb bases de dades <strong>relacionals</strong> utilitzant <strong>objectes</strong>.<br />
-Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
+<p>Un <strong>ORM</strong> (<em>Object Relational Mapping</em>) és un sistema que permet treballar amb bases de dades <strong>relacionals</strong> utilitzant <strong>objectes</strong>.</p>
+<p>Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <ul>
 <li>Podem connectar-nos a una base de dades relacional (MySQL, MariaDB, PostgreSQL, etc.).</li>
 <li>Les taules i columnes es mapegen automàticament amb classes i atributs PHP.</li>
@@ -1721,7 +1721,6 @@ Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <h2 id="3-actualitzar-la-base-de-dades">3. Actualitzar la base de dades</h2>
 <p>Una vegada definida l’entitat o les seues modificacions, és necessari sincronitzar els canvis amb la base de dades perquè l’estructura (taules, columnes, relacions...) coincidisca amb el model definit al projecte.</p>
 <p>El flux de treball habitual és el següent:</p>
-<p>Comandes:</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span>
@@ -1865,48 +1864,50 @@ Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <span class="normal"><a href="#__codelineno-9-35">35</a></span>
 <span class="normal"><a href="#__codelineno-9-36">36</a></span>
 <span class="normal"><a href="#__codelineno-9-37">37</a></span>
-<span class="normal"><a href="#__codelineno-9-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">&lt;?php</span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">use</span> <span class="nx">App\Entity\Contacte</span><span class="p">;</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">use</span> <span class="nx">Doctrine\ORM\EntityManagerInterface</span><span class="p">;</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="c1">// Definir una ruta base i nom (prefix) a nivell de controlador</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contactes&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;contacte_&#39;</span><span class="p">)]</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="p">{</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>    <span class="k">private</span> <span class="nv">$repositori</span><span class="p">;</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">EntityManagerInterface</span> <span class="nv">$gestor</span><span class="p">)</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>    <span class="p">{</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="nx">Contacte</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>    <span class="p">}</span>
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>    <span class="o">...</span>
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>
-</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/crear&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;crear&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
-</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">afegir</span><span class="p">()</span>
-</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>    <span class="p">{</span>
-</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Contacte</span><span class="p">();</span>
-</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setNom</span><span class="p">(</span><span class="s2">&quot;Juan Cuesta&quot;</span><span class="p">);</span>
-</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;659231544&quot;</span><span class="p">);</span>
-</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s2">&quot;juan@simarro.org&quot;</span><span class="p">);</span>
-</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>
-</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>        <span class="c1">// Indiquem que volem guardar aquest objecte</span>
-</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
-</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>
-</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a>        <span class="c1">// S’executa la inserció</span>
-</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
-</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a>
-</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a>        <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Contacte &quot;</span> <span class="o">.</span> <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; guardat.&quot;</span><span class="p">);</span>
-</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a>    <span class="p">}</span>
-</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a>
-</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a>    <span class="o">...</span>
-</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a>
-</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="cp">?&gt;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="o">...</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="k">use</span> <span class="nx">App\Entity\Contacte</span><span class="p">;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">use</span> <span class="nx">Doctrine\ORM\EntityManagerInterface</span><span class="p">;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1">// Definir una ruta base i nom (prefix) a nivell de controlador</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/contactes&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;contacte_&#39;</span><span class="p">)]</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="k">class</span> <span class="nc">ContacteController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="p">{</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>    <span class="k">private</span> <span class="nv">$repositori</span><span class="p">;</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">EntityManagerInterface</span> <span class="nv">$gestor</span><span class="p">)</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>    <span class="p">{</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="nx">Contacte</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a>    <span class="p">}</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a>    <span class="o">...</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19"></a>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20"></a>    <span class="p">#[</span><span class="nd">Route</span><span class="p">(</span><span class="s1">&#39;/crear&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;crear&#39;</span><span class="p">,</span> <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])]</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">afegir</span><span class="p">()</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22"></a>    <span class="p">{</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23"></a>        <span class="nv">$contacte</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Contacte</span><span class="p">();</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setNom</span><span class="p">(</span><span class="s2">&quot;Juan Cuesta&quot;</span><span class="p">);</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;659231544&quot;</span><span class="p">);</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a>        <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setEmail</span><span class="p">(</span><span class="s2">&quot;juan@simarro.org&quot;</span><span class="p">);</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a>        <span class="c1">// Indiquem que volem guardar aquest objecte</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a>        <span class="c1">// S’executa la inserció</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a>        <span class="nd">return</span> <span class="nd">new</span> <span class="nd">Response</span><span class="p">(</span><span class="s2">&quot;Contacte &quot;</span> <span class="o">.</span> <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; guardat.&quot;</span><span class="p">);</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a>    <span class="p">}</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a>    <span class="o">...</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>📝 Notes:</p>
 <ul>
-<li>És important col·locar el controlador d’inserció abans del de cerca, perquè si no, en accedir a la ruta <code>/contacte/inserir</code>, Symfony podria interpretar “inserir” com un paràmetre del controlador de cerca i executar-lo per error.</li>
+<li>És important col·locar el controlador d’inserció abans del de búsqueda, perquè si no, en accedir a la ruta <code>/contacte/crear</code>, Symfony podria interpretar "crear" com un paràmetre del controlador de cerca i executar-lo per error.</li>
 </ul>
 <hr />
 <h3 id="52-modificar">5.2. Modificar</h3>
@@ -1918,9 +1919,9 @@ Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <span class="normal"><a href="#__codelineno-10-6">6</a></span>
 <span class="normal"><a href="#__codelineno-10-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;600000000&quot;</span><span class="p">);</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>    <span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>    <span class="nv">$contacte</span><span class="o">-&gt;</span><span class="na">setTelefon</span><span class="p">(</span><span class="s2">&quot;600000000&quot;</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
@@ -1933,9 +1934,9 @@ Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <span class="normal"><a href="#__codelineno-11-6">6</a></span>
 <span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>    <span class="nv">$contacte</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repositori</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="nv">$gestor</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="nv">$contacte</span><span class="p">);</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
@@ -1955,14 +1956,14 @@ Doctrine és l’ORM més utilitzat amb Symfony. Gràcies a ell:</p>
 <span class="normal"><a href="#__codelineno-12-11">11</a></span>
 <span class="normal"><a href="#__codelineno-12-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cp">&lt;?php</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$objecte</span><span class="p">);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">persist</span><span class="p">(</span><span class="nv">$objecte</span><span class="p">);</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="k">try</span> <span class="p">{</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Objecte guardat&quot;</span><span class="p">);</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>    <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Error guardant objecte: &quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="p">}</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>    <span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">gestor</span><span class="o">-&gt;</span><span class="na">flush</span><span class="p">();</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Objecte guardat&quot;</span><span class="p">);</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="s2">&quot;Error guardant: &quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a>    <span class="p">}</span>
 </span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
@@ -2209,7 +2210,7 @@ Si volem fer cerques parcials o condicionals, podem afegir mètodes personalitza
 </span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19"></a>
 </span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Aquest controlador permet buscar contactes pel nom introduït en la URL, utilitzant la consulta definida al repositori. Després envia els resultats a una vista llista_contactes.html.twig per a mostrar-los.</p>
+<p>Aquest controlador permet buscar contactes pel nom introduït en la URL, utilitzant la consulta definida al repositori. Després envia els resultats a una vista cerca.html.twig per a mostrar-los.</p>
 <hr />
 <p><strong>Exemple 2: buscar contactes majors d'una certa edat</strong></p>
 <p><strong>Fitxer:</strong> <code>src/Repository/ContacteRepository.php</code></p>
